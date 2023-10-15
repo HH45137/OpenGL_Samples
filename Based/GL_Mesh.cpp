@@ -9,9 +9,13 @@
 
 namespace OpenGLSamples::Based {
 
-	void GL_Mesh::init()
+	bool GL_Mesh::init()
 	{
+		if (filePath.empty()) { cout << "Mesh path is empty!\n"; return false; };
 
+		if (!loadObjFile(filePath)) { cout << "Mesh load is error!\n"; return false; }
+
+		return true;
 	}
 
 	void GL_Mesh::use()
@@ -24,7 +28,20 @@ namespace OpenGLSamples::Based {
 
 	}
 
-	void GL_Mesh::loadObjFile(string _path)
+	GL_Mesh::GL_Mesh(std::string _path)
+	{
+		filePath = _path;
+	}
+
+	GL_Mesh::GL_Mesh()
+	{
+	}
+
+	GL_Mesh::~GL_Mesh()
+	{
+	}
+
+	bool GL_Mesh::loadObjFile(string _path)
 	{
 		tinyobj::attrib_t attrib;
 		std::vector<tinyobj::shape_t> shapes;
@@ -41,7 +58,7 @@ namespace OpenGLSamples::Based {
 			std::cout << "\t" << waring << "\n";
 			std::cout << "\t" << error << "\n";
 
-			return;
+			return false;
 		}
 
 		std::unordered_map<Type::Vertex, uint32_t> uniqueVertices{};
@@ -73,6 +90,8 @@ namespace OpenGLSamples::Based {
 				indices.push_back(uniqueVertices[vertex]);
 			}
 		}
+
+		return true;
 	}
 
 }

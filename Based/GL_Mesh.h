@@ -15,14 +15,23 @@ namespace OpenGLSamples {
 		class GL_Mesh : public Mesh
 		{
 		public:
-			void init();
+			bool init();
 
 			void use();
 
 			void close();
 
+			GL_Mesh(std::string _path);
+
+			GL_Mesh();
+			~GL_Mesh();
+
 		private:
-			void loadObjFile(string _path);
+			bool loadObjFile(string _path);
+
+		public:
+			//模型文件路径
+			std::string filePath;
 
 		private:
 			uint32_t VBO, VAO, EBO;

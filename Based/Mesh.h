@@ -7,7 +7,7 @@ namespace OpenGLSamples {
 		class Mesh
 		{
 		public:
-			virtual void init() = 0;
+			virtual bool init() = 0;
 
 			virtual void use() = 0;
 			
