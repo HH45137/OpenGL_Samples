@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="..\thirdparty\glad.c" />
     <ClCompile Include="GL_App.cpp" />
+    <ClCompile Include="GL_Mesh.cpp" />
     <ClCompile Include="GL_RenderPipeline.cpp" />
     <ClCompile Include="GL_SceneRenderPass.cpp" />
     <ClCompile Include="main.cpp" />
@@ -141,10 +142,13 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="GL_App.h" />
+    <ClInclude Include="GL_Mesh.h" />
     <ClInclude Include="GL_RenderPipeline.h" />
     <ClInclude Include="GL_SceneRenderPass.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="RenderPipeline.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
