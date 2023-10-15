@@ -1,3 +1,4 @@
+#include <glad/glad.h>
 #include <unordered_map>
 #include <glm/gtx/hash.hpp>
 
@@ -5,6 +6,7 @@
 #include <tiny_obj_loader.h>
 
 #include "GL_Mesh.h"
+#include "Type.h"
 
 
 namespace OpenGLSamples::Based {
@@ -14,6 +16,38 @@ namespace OpenGLSamples::Based {
 		if (filePath.empty()) { cout << "Mesh path is empty!\n"; return false; };
 
 		if (!loadObjFile(filePath)) { cout << "Mesh load is error!\n"; return false; }
+
+		//-----设置各种顶点Buffer-----
+		glGenVertexArrays(1, &VAO);
+		glGenBuffers(1, &VBO);
+		glGenBuffers(1, &EBO);
+
+		glBindVertexArray(VAO);
+
+		//-----顶点数据-----
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glBufferData(GL_ARRAY_BUFFER, vertexes.size() * sizeof(Type::Vertex), vertexes.data(), GL_STATIC_DRAW);
+
+		//-----设置顶点数据-----
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)0);
+		glEnableVertexAttribArray(0);
+
+		//-----设置贴图坐标数据-----
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(3 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(1);
+
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(5 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(2);
+
+		//-----顶点索引数据-----
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), indices.data(), GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		glBindVertexArray(0);
 
 		return true;
 	}
