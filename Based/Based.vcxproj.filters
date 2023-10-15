@@ -24,6 +24,12 @@
     <ClCompile Include="..\thirdparty\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GL_SceneRenderPass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GL_RenderPipeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -36,6 +42,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GL_App.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL_SceneRenderPass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPipeline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL_RenderPipeline.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

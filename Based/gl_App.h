@@ -5,6 +5,7 @@
 
 #include "App.h"
 #include "Type.h"
+#include "RenderPipeline.h"
 
 
 namespace OpenGLSamples {
@@ -28,6 +29,8 @@ namespace OpenGLSamples {
 
 		private:
 			GLFWwindow* window;
+
+			RenderPipeline* pipeline;
 
 		private:
 			bool initWin();

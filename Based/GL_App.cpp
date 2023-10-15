@@ -1,4 +1,5 @@
 #include "GL_App.h"
+#include "GL_RenderPipeline.h"
 
 
 namespace OpenGLSamples::Based {
@@ -40,6 +41,9 @@ namespace OpenGLSamples::Based {
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+			//调用渲染管线
+			pipeline->render();
+
 			glfwSwapBuffers(window);
 		}
 	}
@@ -47,6 +51,9 @@ namespace OpenGLSamples::Based {
 	void GL_App::close()
 	{
 		std::cout << "App is close\n";
+
+		//关闭渲染管线
+		pipeline->close();
 
 		glfwDestroyWindow(window);
 		glfwTerminate();
@@ -74,6 +81,10 @@ namespace OpenGLSamples::Based {
 	}
 
 	bool GL_App::initGL() {
+
+		//初始化渲染管线
+		pipeline = new GL_RenderPipeline();
+		pipeline->init();
 
 		return true;
 	}
