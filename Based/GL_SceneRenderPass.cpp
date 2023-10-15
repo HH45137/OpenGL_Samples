@@ -1,17 +1,20 @@
 #include "GL_SceneRenderPass.h"
 
 
-void OpenGLSamples::Based::GL_SceneRenderPass::init()
-{
+namespace OpenGLSamples::Based {
 
-}
+	void GL_SceneRenderPass::init()
+	{
 
-void OpenGLSamples::Based::GL_SceneRenderPass::render()
-{
+	}
 
-}
+	void GL_SceneRenderPass::use()
+	{
 
-void OpenGLSamples::Based::GL_SceneRenderPass::close()
-{
+	}
 
+	void GL_SceneRenderPass::close()
+	{
+
+	}
 }

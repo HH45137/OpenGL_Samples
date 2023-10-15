@@ -11,7 +11,7 @@ namespace OpenGLSamples {
 		public:
 			void init();
 
-			void render();
+			void use();
 
 			void close();
 
