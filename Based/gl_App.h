@@ -11,6 +11,7 @@ namespace OpenGLSamples {
 		{
 		public:
 			Type::win_info_s info;
+			bool isExit;
 
 		public:
 			GL_App();
