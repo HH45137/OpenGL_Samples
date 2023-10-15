@@ -34,8 +34,10 @@ namespace OpenGLSamples::Based {
 
 	void GL_App::run()
 	{
-		while (!isExit) {
+		while (!glfwWindowShouldClose(window)) {
+			glfwPollEvents();
 
+			glfwSwapBuffers(window);
 		}
 	}
 
