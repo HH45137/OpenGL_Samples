@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RenderPass.h"
+#include "RendererObject.h"
 
 
 namespace OpenGLSamples {
@@ -16,7 +17,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-
+			std::vector<RendererObject> objects;
 		};
 
 	}

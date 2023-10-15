@@ -135,12 +135,14 @@
     <ClCompile Include="GL_RenderPipeline.cpp" />
     <ClCompile Include="GL_SceneRenderPass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RendererObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="RendererObject.h" />
     <ClInclude Include="GL_App.h" />
     <ClInclude Include="GL_Mesh.h" />
     <ClInclude Include="GL_RenderPipeline.h" />
