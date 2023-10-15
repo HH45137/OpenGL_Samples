@@ -7,6 +7,7 @@ namespace OpenGLSamples::Based {
 	void GL_SceneRenderPass::init()
 	{
 		RendererObject ro;
+		ro.init();
 
 		objects.push_back(ro);
 	}
