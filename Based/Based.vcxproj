@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\thirdparty\glad.c" />
     <ClCompile Include="GL_App.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

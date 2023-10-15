@@ -21,6 +21,9 @@
     <ClCompile Include="GL_App.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\thirdparty\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
