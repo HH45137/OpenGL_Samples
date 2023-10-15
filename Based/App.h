@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "Type.h"
 
 using namespace std;
 
@@ -11,17 +10,12 @@ namespace OpenGLSamples {
 		class App {
 
 		public:
-			Type::win_info_s info;
 
-		public:
-			App();
-			~App();
+			virtual bool init(int _width, int _height, string _title) = 0;
 
-			bool init(int _width, int _height, string _title);
+			virtual void run() = 0;
 
-			void run();
-
-			void close();
+			virtual void close() = 0;
 
 		private:
 
