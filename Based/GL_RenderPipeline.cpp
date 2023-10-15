@@ -11,10 +11,10 @@ namespace OpenGLSamples::Based {
 		scenePass->init();
 		renderPass.push_back(scenePass);
 
-		//后处理的Pass
-		auto postPass = new GL_SceneRenderPass();
-		postPass->init();
-		renderPass.push_back(postPass);
+		////后处理的Pass
+		//auto postPass = new GL_PostRenderPass();
+		//postPass->init();
+		//renderPass.push_back(postPass);
 
 	}
 
