@@ -22,7 +22,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-			void loadObjFile();
+			void loadObjFile(string _path);
 
 		private:
 			uint32_t VBO, VAO, EBO;

@@ -24,7 +24,7 @@ namespace OpenGLSamples::Based {
 
 	}
 
-	void GL_Mesh::loadObjFile()
+	void GL_Mesh::loadObjFile(string _path)
 	{
 		tinyobj::attrib_t attrib;
 		std::vector<tinyobj::shape_t> shapes;
@@ -35,7 +35,7 @@ namespace OpenGLSamples::Based {
 		std::string waring, error;
 
 		//Load obj file
-		bool isLoad = tinyobj::LoadObj(&attrib, &shapes, &materials, &waring, &error, path, path, true, false);
+		bool isLoad = tinyobj::LoadObj(&attrib, &shapes, &materials, &waring, &error, _path.c_str(), _path.c_str(), true, false);
 		if (!isLoad) {
 			std::cout << "Load error!" << "\n";
 			std::cout << "\t" << waring << "\n";
