@@ -37,13 +37,19 @@ namespace OpenGLSamples::Based {
 		while (!glfwWindowShouldClose(window)) {
 			glfwPollEvents();
 
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 			glfwSwapBuffers(window);
 		}
 	}
 
 	void GL_App::close()
 	{
+		std::cout << "App is close\n";
 
+		glfwDestroyWindow(window);
+		glfwTerminate();
 	}
 
 	bool GL_App::initWin() {
