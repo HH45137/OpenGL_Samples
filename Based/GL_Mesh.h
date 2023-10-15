@@ -17,8 +17,6 @@ namespace OpenGLSamples {
 		public:
 			bool init();
 
-			void use();
-
 			void close();
 
 			GL_Mesh(std::string _path);

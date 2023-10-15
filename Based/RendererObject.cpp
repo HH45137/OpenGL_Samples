@@ -15,6 +15,11 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
+	void RendererObject::render()
+	{
+
+	}
+
 	void RendererObject::close()
 	{
 

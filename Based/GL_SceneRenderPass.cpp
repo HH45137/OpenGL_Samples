@@ -15,8 +15,7 @@ namespace OpenGLSamples::Based {
 	void GL_SceneRenderPass::render()
 	{
 		for (auto& item : objects) {
-			item.mesh->use();
-			item.texture->use();
+			item.render();
 		}
 	}
 

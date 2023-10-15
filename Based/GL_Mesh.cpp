@@ -52,11 +52,6 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
-	void GL_Mesh::use()
-	{
-
-	}
-
 	void GL_Mesh::close()
 	{
 

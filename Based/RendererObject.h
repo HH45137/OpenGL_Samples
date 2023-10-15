@@ -10,6 +10,7 @@ namespace OpenGLSamples::Based {
 	{
 	public:
 		bool init();
+		void render();
 		void close();
 
 		RendererObject();

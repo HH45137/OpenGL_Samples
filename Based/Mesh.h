@@ -8,8 +8,6 @@ namespace OpenGLSamples {
 		{
 		public:
 			virtual bool init() = 0;
-
-			virtual void use() = 0;
 			
 			virtual void close() = 0;
 
