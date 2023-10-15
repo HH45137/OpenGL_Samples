@@ -21,7 +21,7 @@ namespace OpenGLSamples::Based {
 	void GL_RenderPipeline::render()
 	{
 		for (size_t i = 0; i < renderPass.size(); i++) {
-			renderPass[i]->use();
+			renderPass[i]->render();
 		}
 
 	}

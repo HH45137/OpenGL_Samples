@@ -12,9 +12,12 @@ namespace OpenGLSamples::Based {
 		objects.push_back(ro);
 	}
 
-	void GL_SceneRenderPass::use()
+	void GL_SceneRenderPass::render()
 	{
-
+		for (auto& item : objects) {
+			item.mesh->use();
+			item.texture->use();
+		}
 	}
 
 	void GL_SceneRenderPass::close()
