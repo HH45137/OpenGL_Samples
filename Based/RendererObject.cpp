@@ -8,6 +8,10 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
+		if (!texture->init()) {
+			return false;
+		}
+
 		return true;
 	}
 
