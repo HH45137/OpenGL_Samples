@@ -19,12 +19,12 @@ namespace OpenGLSamples::Based {
 		info.width = _width; info.height = _height; info.title = _title;
 		cout << "Window info: " << "\n\twidth = " << _width << "\n\theight = " << _height << "\n";
 
-		if (win_init()) {
+		if (initWin()) {
 			cout << "Init window error!\n";
 			return false;
 		}
 
-		if (gl_init()) {
+		if (initGL()) {
 			cout << "Init OpenGL error!\n";
 			return false;
 		}
@@ -43,14 +43,14 @@ namespace OpenGLSamples::Based {
 	{
 
 	}
-}
 
-bool win_init() {
+	bool initWin() {
 
-	return true;
-}
+		return true;
+	}
 
-bool gl_init() {
+	bool initGL() {
 
-	return true;
+		return true;
+	}
 }
