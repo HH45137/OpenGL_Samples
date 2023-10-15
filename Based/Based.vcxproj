@@ -137,6 +137,7 @@
     <ClCompile Include="GL_Texture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RendererObject.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
