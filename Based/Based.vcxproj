@@ -134,6 +134,7 @@
     <ClCompile Include="GL_Mesh.cpp" />
     <ClCompile Include="GL_RenderPipeline.cpp" />
     <ClCompile Include="GL_SceneRenderPass.cpp" />
+    <ClCompile Include="GL_Texture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RendererObject.cpp" />
   </ItemGroup>
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="GL_Texture.h" />
     <ClInclude Include="RendererObject.h" />
     <ClInclude Include="GL_App.h" />
     <ClInclude Include="GL_Mesh.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="RenderPipeline.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
