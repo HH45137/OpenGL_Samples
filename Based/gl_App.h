@@ -1,4 +1,8 @@
 #pragma once
+
+#include <glad/glad.h>
+#include "GLFW/glfw3.h"
+
 #include "App.h"
 #include "Type.h"
 
@@ -24,6 +28,12 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
+			GLFWwindow* window;
+
+		private:
+			bool initWin();
+
+			bool initGL();
 
 		};
 	}

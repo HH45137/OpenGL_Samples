@@ -44,12 +44,28 @@ namespace OpenGLSamples::Based {
 
 	}
 
-	bool initWin() {
+	bool GL_App::initWin() {
+
+		glfwInit();
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+		window = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
+		if (window == nullptr) {
+			glfwTerminate();
+			return false;
+		}
+
+		glfwMakeContextCurrent(window);
+
+		if (gladLoadGL() != true) { return false; }
 
 		return true;
 	}
 
-	bool initGL() {
+	bool GL_App::initGL() {
 
 		return true;
 	}
