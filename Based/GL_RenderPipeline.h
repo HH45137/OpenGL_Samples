@@ -1,6 +1,11 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
+#include <map>
+
 #include "RenderPipeline.h"
+#include "RenderPass.h"
 
 
 namespace OpenGLSamples {
@@ -16,6 +21,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
+			std::vector<RenderPass*> renderPass;
 
 		};
 
