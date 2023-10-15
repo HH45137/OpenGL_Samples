@@ -22,13 +22,16 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
+			void loadObjFile();
+
+		private:
 			uint32_t VBO, VAO, EBO;
 
 			//顶点数据
-			std::vector<Type::Vertex> vertexes;	
+			std::vector<Type::Vertex> vertexes;
 
 			//顶点相互联系的数据
-			std::vector<uint32_t> indices;		
+			std::vector<uint32_t> indices;
 		};
 	}
 }
