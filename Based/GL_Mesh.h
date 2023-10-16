@@ -16,8 +16,6 @@ namespace OpenGLSamples {
 		public:
 			bool init();
 
-			void use();
-
 			void close();
 
 			GL_Mesh(std::string _path);
@@ -37,13 +35,14 @@ namespace OpenGLSamples {
 			//顶点数量
 			int vertexCount;
 
-		private:
-
 			//顶点数据
 			std::vector<Type::Vertex> vertexes;
 
 			//顶点相互联系的数据
 			std::vector<uint32_t> indices;
+
+		private:
+
 		};
 	}
 }
