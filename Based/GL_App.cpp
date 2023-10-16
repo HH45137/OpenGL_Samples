@@ -30,6 +30,10 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
+		/*-------------------设置深度缓冲和视口-------------------*/
+		glViewport(0, 0, WIN_WIDTH, WIN_HEIGHT);
+		glEnable(GL_DEPTH_TEST);
+
 		return true;
 	}
 

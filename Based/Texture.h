@@ -13,6 +13,10 @@ namespace OpenGLSamples {
 
 			virtual void close() = 0;
 
+		public:
+			//ÌùÍ¼µÄOpenGL¾ä±ú
+			uint32_t handle;
+
 		private:
 
 		};

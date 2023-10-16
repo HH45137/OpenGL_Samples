@@ -16,6 +16,7 @@ namespace OpenGLSamples::Based {
 		if (filePath.empty()) { cout << "Mesh path is empty!\n"; return false; };
 
 		if (!loadObjFile(filePath)) { cout << "Mesh load is error!\n"; return false; }
+		vertexCount = indices.size();
 
 		//-----设置各种顶点Buffer-----
 		glGenVertexArrays(1, &VAO);

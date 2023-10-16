@@ -5,6 +5,10 @@ namespace OpenGLSamples::Based {
 
 	bool RendererObject::init()
 	{
+		position = glm::vec3(0.0f, 0.0f, 0.0f);
+		rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+		scaling = glm::vec3(1.0f);
+
 		if (!mesh->init()) {
 			return false;
 		}
@@ -12,6 +16,10 @@ namespace OpenGLSamples::Based {
 		if (!texture->init()) {
 			return false;
 		}
+
+		//ÉèÖÃÌùÍ¼
+		shader.Use();
+		shader.SetUniformValue(texture->handle, "texture01");
 
 		return true;
 	}
@@ -31,8 +39,15 @@ namespace OpenGLSamples::Based {
 		modelMat = glm::rotate(modelMat, glm::radians(0.0f), rotation);
 		modelMat = glm::scale(modelMat, scaling);
 
-		viewMat = glm::translate(viewMat, camera.position);
+		viewMat = glm::translate(viewMat, glm::vec3(0, 0, -10));
 		projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
+
+		shader.SetUniformValue(modelMat, "model");
+		shader.SetUniformValue(viewMat, "view");
+		shader.SetUniformValue(projectionMat, "projection");
+
+		glDrawElements(GL_TRIANGLES, mesh->vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
+		glBindVertexArray(0);
 	}
 
 	void RendererObject::close()

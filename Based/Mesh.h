@@ -13,8 +13,11 @@ namespace OpenGLSamples {
 
 			virtual void close() = 0;
 
-		private:
+		public:
+			int vertexCount;
 
+		private:
+		
 		};
 	}
 }
