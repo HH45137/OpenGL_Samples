@@ -31,7 +31,7 @@ namespace OpenGLSamples {
 			//ÌùÍ¼ÎÄ¼şÂ·¾¶
 			std::string filePath;
 
-			uint32_t handle;
+			unsigned int handle;
 
 		private:
 

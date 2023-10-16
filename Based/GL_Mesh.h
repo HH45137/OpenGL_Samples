@@ -27,7 +27,7 @@ namespace OpenGLSamples {
 			bool loadObjFile(string _path);
 
 		public:
-			uint32_t VBO, VAO, EBO;
+			unsigned int VBO, VAO, EBO;
 
 			//模型文件路径
 			std::string filePath;
