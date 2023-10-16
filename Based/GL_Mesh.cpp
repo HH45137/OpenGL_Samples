@@ -52,6 +52,11 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
+	void GL_Mesh::use()
+	{
+		glBindVertexArray(VAO); 
+	}
+
 	void GL_Mesh::close()
 	{
 

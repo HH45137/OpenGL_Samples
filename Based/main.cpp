@@ -10,7 +10,7 @@ int main()
 	GL_App app;
 
 	try {
-		app.init(1280, 720, "OpenGL base app");
+		app.init(WIN_WIDTH, WIN_HEIGHT, "OpenGL base app");
 		app.run();
 		app.close();
 	}

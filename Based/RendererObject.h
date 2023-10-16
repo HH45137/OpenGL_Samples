@@ -23,7 +23,9 @@ namespace OpenGLSamples::Based {
 		Shader shader = Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl");
 
 	private:
-
+		glm::vec3 position = {};	//位置	
+		glm::vec3 rotation = {};	//旋转
+		glm::vec3 scaling = {};		//大小
 	};
 
 }
