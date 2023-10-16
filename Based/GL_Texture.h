@@ -5,13 +5,12 @@
 #include <string>
 
 #include "Type.h"
-#include "Texture.h"
 
 
 namespace OpenGLSamples {
 	namespace Based {
 
-		class GL_Texture : public Texture
+		class GL_Texture
 		{
 		public:
 			bool init();
@@ -31,6 +30,8 @@ namespace OpenGLSamples {
 		public:
 			//ÌùÍ¼ÎÄ¼şÂ·¾¶
 			std::string filePath;
+
+			uint32_t handle;
 
 		private:
 

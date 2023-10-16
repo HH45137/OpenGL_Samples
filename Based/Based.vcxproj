@@ -153,11 +153,9 @@
     <ClInclude Include="GL_Mesh.h" />
     <ClInclude Include="GL_RenderPipeline.h" />
     <ClInclude Include="GL_SceneRenderPass.h" />
-    <ClInclude Include="Mesh.h" />
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="RenderPipeline.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="Texture.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

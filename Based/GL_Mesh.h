@@ -5,14 +5,13 @@
 #include <vector>
 #include <string>
 
-#include "Mesh.h"
 #include "Type.h"
 
 
 namespace OpenGLSamples {
 	namespace Based {
 
-		class GL_Mesh : public Mesh
+		class GL_Mesh
 		{
 		public:
 			bool init();
@@ -30,11 +29,15 @@ namespace OpenGLSamples {
 			bool loadObjFile(string _path);
 
 		public:
+			uint32_t VBO, VAO, EBO;
+
 			//模型文件路径
 			std::string filePath;
 
+			//顶点数量
+			int vertexCount;
+
 		private:
-			uint32_t VBO, VAO, EBO;
 
 			//顶点数据
 			std::vector<Type::Vertex> vertexes;

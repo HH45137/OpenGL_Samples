@@ -71,16 +71,10 @@
     <ClInclude Include="Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="GL_Mesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RendererObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GL_Texture.h">

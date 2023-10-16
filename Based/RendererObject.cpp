@@ -9,17 +9,17 @@ namespace OpenGLSamples::Based {
 		rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 		scaling = glm::vec3(1.0f);
 
-		if (!mesh->init()) {
+		if (!mesh.init()) {
 			return false;
 		}
 
-		if (!texture->init()) {
+		if (!texture.init()) {
 			return false;
 		}
 
 		//设置贴图
 		shader.Use();
-		shader.SetUniformValue(texture->handle, "texture01");
+		shader.SetUniformValue(texture.handle, "texture01");
 
 		return true;
 	}
@@ -27,8 +27,8 @@ namespace OpenGLSamples::Based {
 	void RendererObject::render()
 	{
 		shader.Use();
-		texture->use();
-		mesh->use();
+		texture.use();
+		mesh.use();
 
 		//记住！必须要先初始化矩阵为1，不然要出大问题
 		glm::mat4 viewMat = glm::mat4(1.0f);
@@ -46,7 +46,7 @@ namespace OpenGLSamples::Based {
 		shader.SetUniformValue(viewMat, "view");
 		shader.SetUniformValue(projectionMat, "projection");
 
-		glDrawElements(GL_TRIANGLES, mesh->vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
+		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);
 	}
 

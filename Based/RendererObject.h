@@ -18,8 +18,8 @@ namespace OpenGLSamples::Based {
 		~RendererObject();
 
 	public:
-		Mesh* mesh = new GL_Mesh("..\\assets\\CornellBox.obj");
-		Texture* texture = new GL_Texture("..\\assets\\CornellBox_Color.png");
+		GL_Mesh mesh = GL_Mesh("..\\assets\\CornellBox.obj");
+		GL_Texture texture = GL_Texture("..\\assets\\CornellBox_Color.png");
 		Shader shader = Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl");
 
 	private:
