@@ -18,6 +18,8 @@ namespace OpenGLSamples::Based {
 		if (!loadObjFile(filePath)) { cout << "Mesh load is error!\n"; return false; }
 
 		vertexCount = indices.size();
+
+		return true;
 	}
 
 	void GL_Mesh::close()
