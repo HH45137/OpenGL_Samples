@@ -10,10 +10,6 @@ namespace OpenGLSamples::Based {
 	class RendererObject
 	{
 	public:
-		bool init();
-		void render();
-		void close();
-
 		RendererObject();
 		~RendererObject();
 
@@ -22,10 +18,12 @@ namespace OpenGLSamples::Based {
 		GL_Texture texture = GL_Texture("..\\assets\\CornellBox_Color.png");
 		Shader shader = Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl");
 
-	private:
 		glm::vec3 position = {};	//位置	
 		glm::vec3 rotation = {};	//旋转
 		glm::vec3 scaling = {};		//大小
+
+	private:
+
 	};
 
 }

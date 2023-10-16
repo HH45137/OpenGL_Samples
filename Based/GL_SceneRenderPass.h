@@ -10,7 +10,7 @@ namespace OpenGLSamples {
 		class GL_SceneRenderPass : public RenderPass
 		{
 		public:
-			void init();
+			bool init();
 
 			void render();
 

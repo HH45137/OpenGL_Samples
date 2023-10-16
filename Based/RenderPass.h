@@ -7,7 +7,7 @@ namespace OpenGLSamples {
 		class RenderPass
 		{
 		public:
-			virtual void init() = 0;
+			virtual bool init() = 0;
 
 			virtual void render() = 0;
 
