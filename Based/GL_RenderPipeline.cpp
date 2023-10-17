@@ -1,5 +1,6 @@
 #include "GL_RenderPipeline.h"
 #include "GL_SceneRenderPass.h"
+#include "GL_ImguiRenderPass.h"
 
 
 namespace OpenGLSamples::Based {
@@ -15,6 +16,10 @@ namespace OpenGLSamples::Based {
 		//auto postPass = new GL_PostRenderPass();
 		//postPass->init();
 		//renderPass.push_back(postPass);
+
+		auto imguiPass = new GL_ImguiRenderPass();
+		imguiPass->init();
+		renderPass.push_back(imguiPass);
 
 	}
 
