@@ -72,7 +72,7 @@ namespace OpenGLSamples::Based {
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 		window = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
-		if (window == nullptr) {
+		if (window == NULL) {
 			glfwTerminate();
 			return false;
 		}
