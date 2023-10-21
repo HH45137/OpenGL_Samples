@@ -10,7 +10,7 @@ namespace OpenGLSamples {
 		class GL_SceneRenderPass : public RenderPass
 		{
 		public:
-			bool init();
+			bool init(Type::win_info_s& winInfo);
 
 			void render();
 

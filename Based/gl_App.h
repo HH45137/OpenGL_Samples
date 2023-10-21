@@ -9,7 +9,7 @@
 
 #include "App.h"
 #include "Type.h"
-#include "RenderPipeline.h"
+#include "GL_RenderPipeline.h"
 
 
 namespace OpenGLSamples {
@@ -22,7 +22,6 @@ namespace OpenGLSamples {
 		{
 		public:
 			Type::win_info_s info;
-			GLFWwindow* window_handle;
 
 		public:
 			GL_App();
@@ -35,7 +34,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-			RenderPipeline* pipeline;
+			GL_RenderPipeline pipeline;
 
 		private:
 			bool initWin();

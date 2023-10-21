@@ -4,17 +4,19 @@
 #include <vector>
 #include <map>
 
-#include "RenderPipeline.h"
 #include "RenderPass.h"
 
 
 namespace OpenGLSamples {
 	namespace Based {
 
-		class GL_RenderPipeline : public RenderPipeline
+		class GL_RenderPipeline
 		{
 		public:
-			void init(GL_App& app);
+			GL_RenderPipeline() = default;
+			~GL_RenderPipeline() = default;
+
+			void init(Type::win_info_s& winInfo);
 
 			void render();
 

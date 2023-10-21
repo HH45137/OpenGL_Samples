@@ -5,7 +5,7 @@
 
 namespace OpenGLSamples::Based {
 
-	bool GL_SceneRenderPass::init()
+	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo)
 	{
 		RendererObject ro;
 		ro.mesh = GL_Mesh("..\\assets\\CornellBox.obj");

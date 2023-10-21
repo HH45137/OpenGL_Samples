@@ -39,16 +39,16 @@ namespace OpenGLSamples::Based {
 
 	void GL_App::run()
 	{
-		while (!glfwWindowShouldClose(window_handle)) {
+		while (!glfwWindowShouldClose((GLFWwindow*)info.handle)) {
 			glfwPollEvents();
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			//调用渲染管线
-			pipeline->render();
+			pipeline.render();
 
-			glfwSwapBuffers(window_handle);
+			glfwSwapBuffers((GLFWwindow*)info.handle);
 		}
 	}
 
@@ -57,9 +57,9 @@ namespace OpenGLSamples::Based {
 		std::cout << "App is close\n";
 
 		//关闭渲染管线
-		pipeline->close();
+		pipeline.close();
 
-		glfwDestroyWindow(window_handle);
+		glfwDestroyWindow((GLFWwindow*)info.handle);
 		glfwTerminate();
 	}
 
@@ -71,13 +71,13 @@ namespace OpenGLSamples::Based {
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-		window_handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
-		if (window_handle == NULL) {
+		info.handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
+		if (info.handle == NULL) {
 			glfwTerminate();
 			return false;
 		}
 
-		glfwMakeContextCurrent(window_handle);
+		glfwMakeContextCurrent((GLFWwindow*)info.handle);
 
 		if (gladLoadGL() != true) { return false; }
 
@@ -87,8 +87,7 @@ namespace OpenGLSamples::Based {
 	bool GL_App::initGL() {
 
 		//初始化渲染管线
-		pipeline = new GL_RenderPipeline();
-		pipeline->init(*this);
+		pipeline.init(this->info);
 
 		return true;
 	}

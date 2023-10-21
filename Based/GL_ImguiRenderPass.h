@@ -10,7 +10,7 @@ namespace OpenGLSamples {
 		class GL_ImguiRenderPass : public RenderPass
 		{
 		public:
-			bool init();
+			bool init(Type::win_info_s& winInfo);
 
 			void render();
 

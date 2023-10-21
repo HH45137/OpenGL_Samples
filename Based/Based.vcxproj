@@ -174,7 +174,6 @@
     <ClInclude Include="GL_RenderPipeline.h" />
     <ClInclude Include="GL_SceneRenderPass.h" />
     <ClInclude Include="RenderPass.h" />
-    <ClInclude Include="RenderPipeline.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>

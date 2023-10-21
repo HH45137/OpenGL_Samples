@@ -13,6 +13,7 @@ namespace OpenGLSamples {
 		struct win_info_s {
 			int width, height;
 			string title;
+			void* handle;
 		};
 
 		//¶¥µã
