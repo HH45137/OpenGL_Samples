@@ -13,6 +13,9 @@ namespace OpenGLSamples {
 
 			virtual void close() = 0;
 
+		public:
+			void* window_handle;
+
 		private:
 
 		};

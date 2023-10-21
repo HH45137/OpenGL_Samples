@@ -17,8 +17,6 @@ namespace OpenGLSamples {
 
 		const int WIN_WIDTH = 1280, WIN_HEIGHT = 720, FOV = 90;
 
-		static GLFWwindow* window;
-
 		//OpenGL App
 		class GL_App : public App
 		{

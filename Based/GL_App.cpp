@@ -39,7 +39,7 @@ namespace OpenGLSamples::Based {
 
 	void GL_App::run()
 	{
-		while (!glfwWindowShouldClose(window)) {
+		while (!glfwWindowShouldClose((GLFWwindow*)window_handle)) {
 			glfwPollEvents();
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -48,7 +48,7 @@ namespace OpenGLSamples::Based {
 			//调用渲染管线
 			pipeline->render();
 
-			glfwSwapBuffers(window);
+			glfwSwapBuffers((GLFWwindow*)window_handle);
 		}
 	}
 
@@ -59,7 +59,7 @@ namespace OpenGLSamples::Based {
 		//关闭渲染管线
 		pipeline->close();
 
-		glfwDestroyWindow(window);
+		glfwDestroyWindow((GLFWwindow*)window_handle);
 		glfwTerminate();
 	}
 
@@ -71,13 +71,13 @@ namespace OpenGLSamples::Based {
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-		window = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
-		if (window == NULL) {
+		window_handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
+		if (window_handle == NULL) {
 			glfwTerminate();
 			return false;
 		}
 
-		glfwMakeContextCurrent(window);
+		glfwMakeContextCurrent((GLFWwindow*)window_handle);
 
 		if (gladLoadGL() != true) { return false; }
 
