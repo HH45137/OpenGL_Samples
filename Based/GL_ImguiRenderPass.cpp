@@ -18,6 +18,11 @@ namespace OpenGLSamples::Based {
 
 		ImGui::StyleColorsDark();
 
+		if (window_handle == nullptr) {
+			cout << "window handle is nullptr!\n";
+			return false;
+		}
+
 		ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)window_handle, true); //会报错，或许是因为GLFW的版本问题？
 		ImGui_ImplOpenGL3_Init();
 

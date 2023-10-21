@@ -9,7 +9,9 @@ namespace OpenGLSamples::Based {
 	{
 		//场景的Pass
 		auto scenePass = new GL_SceneRenderPass();
-		scenePass->init();
+		if (!scenePass->init()) {
+			return;
+		}
 		renderPass.push_back(scenePass);
 
 		////后处理的Pass
@@ -18,7 +20,9 @@ namespace OpenGLSamples::Based {
 		//renderPass.push_back(postPass);
 
 		auto imguiPass = new GL_ImguiRenderPass();
-		imguiPass->init();
+		if (!imguiPass->init()) {
+			return;
+		}
 		renderPass.push_back(imguiPass);
 
 	}
