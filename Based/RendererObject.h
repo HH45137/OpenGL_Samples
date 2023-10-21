@@ -14,9 +14,9 @@ namespace OpenGLSamples::Based {
 		~RendererObject();
 
 	public:
-		GL_Mesh mesh = GL_Mesh("..\\assets\\CornellBox.obj");
-		GL_Texture texture = GL_Texture("..\\assets\\CornellBox_Color.png");
-		Shader shader = Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl");
+		GL_Mesh mesh;
+		GL_Texture texture;
+		Shader shader;
 
 		glm::vec3 position = {};	//Î»ÖÃ	
 		glm::vec3 rotation = {};	//Ðý×ª
