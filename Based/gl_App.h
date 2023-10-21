@@ -22,6 +22,7 @@ namespace OpenGLSamples {
 		{
 		public:
 			Type::win_info_s info;
+			GLFWwindow* window_handle;
 
 		public:
 			GL_App();

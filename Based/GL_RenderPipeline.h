@@ -14,7 +14,7 @@ namespace OpenGLSamples {
 		class GL_RenderPipeline : public RenderPipeline
 		{
 		public:
-			void init();
+			void init(GL_App& app);
 
 			void render();
 

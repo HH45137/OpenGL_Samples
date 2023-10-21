@@ -39,7 +39,7 @@ namespace OpenGLSamples::Based {
 
 	void GL_App::run()
 	{
-		while (!glfwWindowShouldClose((GLFWwindow*)window_handle)) {
+		while (!glfwWindowShouldClose(window_handle)) {
 			glfwPollEvents();
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -48,7 +48,7 @@ namespace OpenGLSamples::Based {
 			//调用渲染管线
 			pipeline->render();
 
-			glfwSwapBuffers((GLFWwindow*)window_handle);
+			glfwSwapBuffers(window_handle);
 		}
 	}
 
@@ -59,7 +59,7 @@ namespace OpenGLSamples::Based {
 		//关闭渲染管线
 		pipeline->close();
 
-		glfwDestroyWindow((GLFWwindow*)window_handle);
+		glfwDestroyWindow(window_handle);
 		glfwTerminate();
 	}
 
@@ -77,7 +77,7 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		glfwMakeContextCurrent((GLFWwindow*)window_handle);
+		glfwMakeContextCurrent(window_handle);
 
 		if (gladLoadGL() != true) { return false; }
 
@@ -88,7 +88,7 @@ namespace OpenGLSamples::Based {
 
 		//初始化渲染管线
 		pipeline = new GL_RenderPipeline();
-		pipeline->init();
+		pipeline->init(*this);
 
 		return true;
 	}

@@ -5,7 +5,7 @@
 
 namespace OpenGLSamples::Based {
 
-	void GL_RenderPipeline::init()
+	void GL_RenderPipeline::init(GL_App& app)
 	{
 		//³¡¾°µÄPass
 		auto scenePass = new GL_SceneRenderPass();

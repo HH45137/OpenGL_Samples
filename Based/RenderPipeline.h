@@ -1,4 +1,5 @@
 #pragma once
+#include "gl_App.h"
 
 
 namespace OpenGLSamples {
@@ -7,7 +8,7 @@ namespace OpenGLSamples {
 		class RenderPipeline
 		{
 		public:
-			virtual void init() = 0;
+			virtual void init(GL_App& app) = 0;
 
 			virtual void render() = 0;
 
