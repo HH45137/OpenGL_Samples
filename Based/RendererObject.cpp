@@ -17,15 +17,21 @@ namespace OpenGLSamples::Based {
 
 	bool RendererObject::init()
 	{
+		mesh.filePath = meshPath;
 		if (!mesh.init()) {
+			cout << "Mesh init error!\n";
 			return false;
 		}
 
+		texture.filePath = texturePath;
 		if (!texture.init()) {
+			cout << "Texture init error!\n";
 			return false;
 		}
 
-		if (!shader.init()) {
+		shader = Shader(vsPath, fsPath);
+		if (shader.id == -1) {
+			cout << "Shader init error!\n";
 			return false;
 		}
 

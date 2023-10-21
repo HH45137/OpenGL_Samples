@@ -7,19 +7,12 @@ namespace OpenGLSamples::Based {
 
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo)
 	{
-		RendererObject ro(
-			"..\\assets\\CornellBox.obj",
-			"..\\assets\\CornellBox_Color.png",
-			"..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl",
-			glm::vec3(0.0f, 0.0f, 0.0f),
-			glm::vec3(0.0f, 1.0f, 0.0f),
-			glm::vec3(1.0f));
 
-		objects.push_back(ro);
 
 		for (auto& item : objects)
 		{
 			if (!item.init()) {
+				cout << "RenderObject init error!\n";
 				return false;
 			}
 

@@ -160,6 +160,7 @@
     <ClInclude Include="GL_App.h" />
     <ClInclude Include="GL_ImguiRenderPass.h" />
     <ClInclude Include="GL_Texture.h" />
+    <ClInclude Include="GL_World.h" />
     <ClInclude Include="Imgui\imconfig.h" />
     <ClInclude Include="Imgui\imgui.h" />
     <ClInclude Include="Imgui\imgui_impl_glfw.h" />

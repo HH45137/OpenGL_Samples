@@ -11,7 +11,15 @@ using namespace OpenGLSamples::Based;
 int main()
 {
 	GL_World world01;
-	world01.set();
+	world01.set({
+		RendererObject(
+			"..\\assets\\CornellBox.obj",
+			"..\\assets\\CornellBox_Color.png",
+			"..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl",
+			glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f),
+			glm::vec3(1.0f))
+		});
 
 	GL_App app;
 

@@ -19,7 +19,7 @@ namespace OpenGLSamples::Based {
 	class Shader
 	{
 	public:
-		GLint id = 0;
+		GLint id = -1;
 
 	public:
 		Shader(std::string vertexSourceCodePath, std::string fragmentSourceCodePath);
