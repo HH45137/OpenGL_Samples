@@ -11,6 +11,10 @@ namespace OpenGLSamples::Based {
 		GL_World() = default;
 		~GL_World() = default;
 
+		void set(RendererObject _object) {
+			objects.push_back(_object);
+		}
+
 		void set(std::vector<RendererObject>& _objects) {
 			objects = _objects;
 		}
