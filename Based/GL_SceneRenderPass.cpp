@@ -7,19 +7,18 @@ namespace OpenGLSamples::Based {
 
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo)
 	{
-		RendererObject ro;
-		ro.mesh = GL_Mesh("..\\assets\\CornellBox.obj");
-		ro.texture = GL_Texture("..\\assets\\CornellBox_Color.png");
-		ro.shader = Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl");
+		RendererObject ro(
+			GL_Mesh("..\\assets\\CornellBox.obj"),
+			GL_Texture("..\\assets\\CornellBox_Color.png"),
+			Shader("..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl"),
+			glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f),
+			glm::vec3(1.0f));
 
 		objects.push_back(ro);
 
 		for (auto& item : objects)
 		{
-			item.position = glm::vec3(0.0f, 0.0f, 0.0f);
-			item.rotation = glm::vec3(0.0f, 1.0f, 0.0f);
-			item.scaling = glm::vec3(1.0f);
-
 			if (!item.mesh.init()) {
 				return false;
 			}

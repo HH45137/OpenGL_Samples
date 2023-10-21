@@ -10,8 +10,10 @@ namespace OpenGLSamples::Based {
 	class RendererObject
 	{
 	public:
-		RendererObject();
-		~RendererObject();
+		RendererObject(GL_Mesh _mesh, GL_Texture _texture, Shader _shader, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling);
+
+		//RendererObject() = default;
+		~RendererObject() = default;
 
 	public:
 		GL_Mesh mesh;
