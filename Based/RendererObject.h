@@ -20,9 +20,9 @@ namespace OpenGLSamples::Based {
 		GL_Texture texture;
 		Shader shader;
 
-		glm::vec3 position = {};	//位置	
-		glm::vec3 rotation = {};	//旋转
-		glm::vec3 scaling = {};		//大小
+		glm::vec3 position = glm::vec3(0.0f);				//位置	
+		glm::vec3 rotation = glm::vec3(0.0f, 1.0f, 0.0f);	//旋转
+		glm::vec3 scaling = glm::vec3(1.0f);				//大小
 
 	private:
 
