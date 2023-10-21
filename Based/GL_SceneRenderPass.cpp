@@ -5,9 +5,9 @@
 
 namespace OpenGLSamples::Based {
 
-	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo)
+	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
-
+		this->objects = world.get();
 
 		for (auto& item : objects)
 		{

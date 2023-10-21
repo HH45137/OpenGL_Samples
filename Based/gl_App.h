@@ -7,7 +7,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "App.h"
 #include "Type.h"
 #include "GL_RenderPipeline.h"
 
@@ -18,7 +17,7 @@ namespace OpenGLSamples {
 		const int WIN_WIDTH = 1280, WIN_HEIGHT = 720, FOV = 90;
 
 		//OpenGL App
-		class GL_App : public App
+		class GL_App
 		{
 		public:
 			Type::win_info_s info;
@@ -27,7 +26,7 @@ namespace OpenGLSamples {
 			GL_App();
 			~GL_App();
 
-			bool init(int _width, int _height, string _title);
+			bool init(int _width, int _height, string _title, GL_World& world);
 
 			void run();
 
@@ -35,11 +34,6 @@ namespace OpenGLSamples {
 
 		private:
 			GL_RenderPipeline pipeline;
-
-		private:
-			bool initWin();
-
-			bool initGL();
 
 		};
 	}

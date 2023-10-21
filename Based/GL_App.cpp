@@ -1,6 +1,29 @@
 #include "GL_App.h"
 #include "GL_RenderPipeline.h"
+#include "GL_World.h"
+#include "Type.h"
 
+
+bool initWin(OpenGLSamples::Type::win_info_s& info) {
+
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+	info.handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
+	if (info.handle == NULL) {
+		glfwTerminate();
+		return false;
+	}
+
+	glfwMakeContextCurrent((GLFWwindow*)info.handle);
+
+	if (gladLoadGL() != true) { return false; }
+
+	return true;
+}
 
 namespace OpenGLSamples::Based {
 
@@ -14,18 +37,19 @@ namespace OpenGLSamples::Based {
 
 	}
 
-	bool GL_App::init(int _width, int _height, string _title)
+	bool GL_App::init(int _width, int _height, string _title, GL_World& world)
 	{
 		if (_width <= 0 || _height <= 0 || _title.empty()) { return false; }
 		info.width = _width; info.height = _height; info.title = _title;
 		cout << "Window info: " << "\n\twidth = " << _width << "\n\theight = " << _height << "\n";
 
-		if (!initWin()) {
+		if (!initWin(this->info)) {
 			cout << "Init window error!\n";
 			return false;
 		}
 
-		if (!initGL()) {
+		//初始化渲染管线
+		if (!pipeline.init(this->info, world)) {
 			cout << "Init OpenGL error!\n";
 			return false;
 		}
@@ -61,34 +85,5 @@ namespace OpenGLSamples::Based {
 
 		glfwDestroyWindow((GLFWwindow*)info.handle);
 		glfwTerminate();
-	}
-
-	bool GL_App::initWin() {
-
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-		info.handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
-		if (info.handle == NULL) {
-			glfwTerminate();
-			return false;
-		}
-
-		glfwMakeContextCurrent((GLFWwindow*)info.handle);
-
-		if (gladLoadGL() != true) { return false; }
-
-		return true;
-	}
-
-	bool GL_App::initGL() {
-
-		//初始化渲染管线
-		pipeline.init(this->info);
-
-		return true;
 	}
 }

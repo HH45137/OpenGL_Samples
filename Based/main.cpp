@@ -24,7 +24,7 @@ int main()
 	GL_App app;
 
 	try {
-		app.init(WIN_WIDTH, WIN_HEIGHT, "OpenGL base app");
+		app.init(WIN_WIDTH, WIN_HEIGHT, "OpenGL base app", world01);
 		app.run();
 		app.close();
 	}

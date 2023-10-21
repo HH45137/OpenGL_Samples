@@ -6,7 +6,7 @@ ImGuiIO* io = NULL;
 
 namespace OpenGLSamples::Based {
 
-	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo)
+	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
 		/*-------------------…Ë÷√Imgui-------------------*/
 		IMGUI_CHECKVERSION();

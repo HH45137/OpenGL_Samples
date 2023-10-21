@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Type.h"
+#include "GL_World.h"
 
 
 namespace OpenGLSamples {
@@ -9,7 +10,7 @@ namespace OpenGLSamples {
 		class RenderPass
 		{
 		public:
-			virtual bool init(Type::win_info_s& winInfo) = 0;
+			virtual bool init(Type::win_info_s& winInfo, GL_World& world) = 0;
 
 			virtual void render() = 0;
 

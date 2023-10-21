@@ -5,12 +5,12 @@
 
 namespace OpenGLSamples::Based {
 
-	void GL_RenderPipeline::init(Type::win_info_s& winInfo)
+	bool GL_RenderPipeline::init(Type::win_info_s& winInfo, GL_World& world)
 	{
 		//³¡¾°µÄPass
 		auto scenePass = new GL_SceneRenderPass();
-		if (!scenePass->init(winInfo)) {
-			return;
+		if (!scenePass->init(winInfo, world)) {
+			return false;
 		}
 		renderPass.push_back(scenePass);
 
@@ -20,8 +20,8 @@ namespace OpenGLSamples::Based {
 		//renderPass.push_back(postPass);
 
 		auto imguiPass = new GL_ImguiRenderPass();
-		if (!imguiPass->init(winInfo)) {
-			return;
+		if (!imguiPass->init(winInfo, world)) {
+			return false;
 		}
 		renderPass.push_back(imguiPass);
 
