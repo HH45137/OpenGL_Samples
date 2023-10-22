@@ -56,10 +56,10 @@ namespace OpenGLSamples::Based {
 
 				std::string title = std::format("Object:{0}", i);
 				ImGui::Text(title.c_str());
-				ImGui::SliderFloat3("Position:", *pos, -100.0f, 100.0f);
-				ImGui::SliderFloat3("Rotation axis:", *rot, 0.0f, 1.0f);
-				ImGui::SliderFloat("Rotation angle:", &item.rotationAngle, 0.0f, 360.0f);
-				ImGui::SliderFloat3("Scaling", *siz, -0.0f, 20.0f);
+				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+				ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
+				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+				ImGui::SliderFloat3((title + "Scaling").c_str(), *siz, -0.0f, 20.0f);
 			}
 
 			ImGui::End();
