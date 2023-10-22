@@ -18,6 +18,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
+			std::vector<RendererObject> objects;
 
 		};
 

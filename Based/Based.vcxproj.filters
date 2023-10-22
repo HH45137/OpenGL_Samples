@@ -77,9 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Type.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -87,9 +84,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GL_SceneRenderPass.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderPipeline.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GL_RenderPipeline.h">
@@ -139,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="Imgui\imstb_truetype.h">
       <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="GL_World.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
