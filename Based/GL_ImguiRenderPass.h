@@ -11,6 +11,9 @@ namespace OpenGLSamples {
 		class GL_ImguiRenderPass : public RenderPass
 		{
 		public:
+			GL_ImguiRenderPass() = default;
+			~GL_ImguiRenderPass() = default;
+
 			bool init(Type::win_info_s& winInfo, GL_World& world);
 
 			void render();
@@ -18,7 +21,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-			std::vector<RendererObject> objects;
+			std::vector<RendererObject>* objects;
 
 		};
 

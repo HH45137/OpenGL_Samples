@@ -7,9 +7,9 @@ namespace OpenGLSamples::Based {
 
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
-		this->objects = world.get();
+		this->objects = &world.get();
 
-		for (auto& item : objects)
+		for (auto& item : *objects)
 		{
 			if (!item.init()) {
 				cout << "RenderObject init error!\n";
@@ -63,7 +63,7 @@ namespace OpenGLSamples::Based {
 
 	void GL_SceneRenderPass::render()
 	{
-		for (auto& item : objects) {
+		for (auto& item : *objects) {
 			item.shader.Use();
 			item.texture.use();
 
@@ -75,7 +75,7 @@ namespace OpenGLSamples::Based {
 			glm::mat4 modelMat = glm::mat4(1.0f);
 
 			modelMat = glm::translate(modelMat, item.position);
-			modelMat = glm::rotate(modelMat, glm::radians(0.0f), item.rotation);
+			modelMat = glm::rotate(modelMat, glm::radians(item.rotationAngle), item.rotation);
 			modelMat = glm::scale(modelMat, item.scaling);
 
 			viewMat = glm::translate(viewMat, glm::vec3(0, 0, -50));

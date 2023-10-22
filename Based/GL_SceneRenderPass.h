@@ -10,6 +10,9 @@ namespace OpenGLSamples {
 		class GL_SceneRenderPass : public RenderPass
 		{
 		public:
+			GL_SceneRenderPass() = default;
+			~GL_SceneRenderPass() = default;
+
 			bool init(Type::win_info_s& winInfo, GL_World& world);
 
 			void render();
@@ -17,7 +20,7 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-			std::vector<RendererObject> objects;
+			std::vector<RendererObject>* objects;
 		};
 
 	}

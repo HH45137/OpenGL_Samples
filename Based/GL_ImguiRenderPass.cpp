@@ -10,7 +10,7 @@ namespace OpenGLSamples::Based {
 
 	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
-		this->objects = world.get();
+		this->objects = &world.get();
 
 		/*-------------------…Ë÷√Imgui-------------------*/
 		IMGUI_CHECKVERSION();
@@ -47,8 +47,8 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("This is some option");
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
-			for (size_t i = 0; i < objects.size(); i++) {
-				RendererObject& item = objects[i];
+			for (size_t i = 0; i < (*objects).size(); i++) {
+				RendererObject& item = (*objects)[i];
 
 				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
 				float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
@@ -59,7 +59,7 @@ namespace OpenGLSamples::Based {
 				ImGui::SliderFloat3("Position:", *pos, -100.0f, 100.0f);
 				ImGui::SliderFloat3("Rotation axis:", *rot, 0.0f, 1.0f);
 				ImGui::SliderFloat("Rotation angle:", &item.rotationAngle, 0.0f, 360.0f);
-				ImGui::SliderFloat3("Scaling", *siz, -0.0f, 100.0f);
+				ImGui::SliderFloat3("Scaling", *siz, -0.0f, 20.0f);
 			}
 
 			ImGui::End();
