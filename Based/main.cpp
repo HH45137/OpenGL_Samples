@@ -19,10 +19,19 @@ int main()
 			glm::vec3(0.0f, 0.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f),
 			glm::vec3(1.0f)));
+	//world01.set(
+	//	RendererObject(
+	//		"..\\assets\\PC_Mesh.obj",
+	//		"..\\assets\\PC_Texture.png",
+	//		"..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl",
+	//		glm::vec3(0.0f, 0.0f, 0.0f),
+	//		glm::vec3(0.0f, 1.0f, 0.0f),
+	//		glm::vec3(5.0f))
+	//);
 	world01.set(
 		RendererObject(
-			"..\\assets\\PC_Mesh.obj",
-			"..\\assets\\PC_Texture.png",
+			"..\\assets\\Price.obj",
+			"..\\assets\\price_texture_1k.png",
 			"..\\assets\\model_vs.glsl", "..\\assets\\model_fs.glsl",
 			glm::vec3(0.0f, 0.0f, 0.0f),
 			glm::vec3(0.0f, 1.0f, 0.0f),
