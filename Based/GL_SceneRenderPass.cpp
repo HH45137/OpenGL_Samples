@@ -87,7 +87,12 @@ namespace OpenGLSamples::Based {
 			modelMat = glm::scale(modelMat, item.scaling);
 
 			viewMat = glm::translate(viewMat, cameraTemp->position);
-			viewMat = glm::lookAt(cameraTemp->position, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+			const float radius = 10.0f;
+			float camX = sin(glfwGetTime()) * radius;
+			float camY = cos(glfwGetTime()) * radius;
+
+			viewMat = glm::lookAt(glm::vec3(camX, 0.0f, camY), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 			projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
 			item.shader.SetUniformValue(modelMat, "model");
