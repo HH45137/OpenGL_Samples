@@ -14,6 +14,8 @@ namespace OpenGLSamples::Based {
 		~Camera() = default;
 
 	public:
+		glm::vec3 front;
+		glm::vec3 up;
 
 	private:
 
