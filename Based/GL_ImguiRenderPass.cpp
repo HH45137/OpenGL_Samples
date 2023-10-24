@@ -19,6 +19,7 @@ namespace OpenGLSamples::Based {
 		(void)io;
 		(*io).ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 		(*io).ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+		(*io).IniFilename = NULL;	//不保存 imgui.ini 文件
 
 		ImGui::StyleColorsDark();
 
@@ -50,20 +51,37 @@ namespace OpenGLSamples::Based {
 			for (size_t i = 0; i < (*objects).size(); i++) {
 				RendererObject& item = (*objects)[i];
 
-				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
-				float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
-				float* siz[3] = { &item.scaling.x,&item.scaling.y ,&item.scaling.z };
+				if (item.type == Type::OBJECT_TYPE::RENDER_OBJECT) {
 
-				std::string title = std::format("Object:{0}", i);
-				ImGui::Text(title.c_str());
-				//位置
-				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
-				//旋转
-				ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
-				//缩放
-				ImGui::SliderFloat((title + "Scaling").c_str(), &item.scaling.x, -0.0f, 20.0f);
-				item.scaling = glm::vec3(item.scaling.x);
+					float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
+					float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
+					float* siz[3] = { &item.scaling.x,&item.scaling.y ,&item.scaling.z };
+
+					std::string title = std::format("Object:{0} ", i);
+					ImGui::Text(title.c_str());
+					//位置
+					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+					//旋转
+					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
+					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+					//缩放
+					ImGui::SliderFloat((title + "Scaling:").c_str(), &item.scaling.x, -0.0f, 20.0f);
+					item.scaling = glm::vec3(item.scaling.x);
+				}
+
+				if (item.type == Type::OBJECT_TYPE::CAMERA) {
+
+					float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
+					float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
+
+					std::string title = std::format("Camera:{0} ", i);
+					ImGui::Text(title.c_str());
+					//位置
+					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+					//旋转
+					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
+					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+				}
 			}
 
 			ImGui::End();

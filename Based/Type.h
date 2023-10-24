@@ -26,6 +26,13 @@ namespace OpenGLSamples {
 				return pos == other.pos && texCoord == other.texCoord && normal == other.normal;
 			}
 		};
+
+		//物体类型
+		enum OBJECT_TYPE {
+			RENDER_OBJECT = 1,
+			CAMERA,
+			OBJECT_TYPE_COUNT
+		};
 	}
 }
 

@@ -11,6 +11,10 @@ namespace OpenGLSamples::Based {
 
 		for (auto& item : *objects)
 		{
+			if (item.type == Type::OBJECT_TYPE::CAMERA) {
+				continue;
+			}
+
 			if (!item.init()) {
 				cout << "RenderObject init error!\n";
 				return false;

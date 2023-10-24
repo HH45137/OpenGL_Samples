@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RendererObject.h"
+#include "Camera.h"
 
 
 namespace OpenGLSamples::Based {

@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\thirdparty\glad.c" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GL_App.cpp" />
     <ClCompile Include="GL_ImguiRenderPass.cpp" />
     <ClCompile Include="GL_Mesh.cpp" />
@@ -156,6 +157,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="GL_App.h" />
     <ClInclude Include="GL_ImguiRenderPass.h" />
     <ClInclude Include="GL_Texture.h" />
