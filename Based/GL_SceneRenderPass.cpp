@@ -5,13 +5,17 @@
 
 namespace OpenGLSamples::Based {
 
+	Camera* cameraTemp = nullptr;	//临时保存Camera对象
+
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
 		this->objects = &world.get();
 
 		for (auto& item : *objects)
 		{
+			//遍历到Camera
 			if (item.type == Type::OBJECT_TYPE::CAMERA) {
+				cameraTemp = (Camera*)&item;
 				continue;
 			}
 
@@ -82,7 +86,8 @@ namespace OpenGLSamples::Based {
 			modelMat = glm::rotate(modelMat, glm::radians(item.rotationAngle), item.rotation);
 			modelMat = glm::scale(modelMat, item.scaling);
 
-			viewMat = glm::translate(viewMat, glm::vec3(0, 0, -50));
+			viewMat = glm::translate(viewMat, cameraTemp->position);
+			viewMat = glm::lookAt(cameraTemp->position, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 			projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
 			item.shader.SetUniformValue(modelMat, "model");
