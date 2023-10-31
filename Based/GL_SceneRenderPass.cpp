@@ -7,11 +7,16 @@ using namespace OpenGLSamples::Based;
 
 GLFWwindow* windowHandle = nullptr;	//窗口句柄
 
-glm::mat4 processCameraInput(GLFWwindow* _window, Camera _camera, float _speed) {
+//处理摄像机相关的设备输入
+void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 
-	glm::mat4 viewMat = glm::lookAt(_camera.position, _camera.position + _camera.front, _camera.up);
+	float _speed = 0.7;
 
-	return viewMat;
+	if (glfwGetKey(_window, GLFW_KEY_W) == GLFW_PRESS) { _camera->position += _speed * _camera->front; }
+	if (glfwGetKey(_window, GLFW_KEY_S) == GLFW_PRESS) { _camera->position -= _speed * _camera->front; }
+
+	if (glfwGetKey(_window, GLFW_KEY_A) == GLFW_PRESS) { _camera->position -= glm::normalize(glm::cross(_camera->front, _camera->up)) * _speed; }
+	if (glfwGetKey(_window, GLFW_KEY_D) == GLFW_PRESS) { _camera->position += glm::normalize(glm::cross(_camera->front, _camera->up)) * _speed; }
 }
 
 namespace OpenGLSamples::Based {
@@ -93,7 +98,8 @@ namespace OpenGLSamples::Based {
 			modelMat = glm::rotate(modelMat, glm::radians(item.rotationAngle), item.rotation);
 			modelMat = glm::scale(modelMat, item.scaling);
 
-			viewMat = processCameraInput(windowHandle, *cameraTemp, 1.0f);
+			processCameraInput(windowHandle, cameraTemp);
+			viewMat = glm::lookAt(cameraTemp->position, cameraTemp->position + cameraTemp->front, cameraTemp->up);
 			projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
 			item.shader.SetUniformValue(modelMat, "model");
