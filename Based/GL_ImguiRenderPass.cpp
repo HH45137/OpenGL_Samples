@@ -10,13 +10,9 @@ ImGuiIO* io = NULL;
 
 namespace OpenGLSamples::Based {
 
-	Camera* cameraTemp = nullptr;	//临时保存Camera对象
-
 	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
-		cameraTemp = world.getCamera();
-
-		this->objects = &world.get();
+		this->worldObjects = &world;
 
 		/*-------------------设置Imgui-------------------*/
 		IMGUI_CHECKVERSION();
@@ -54,8 +50,8 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("This is some option");
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
-			for (size_t i = 0; i < (*objects).size(); i++) {
-				RendererObject& item = (*objects)[i];
+			for (size_t i = 0; i < worldObjects->get()->size(); i++) {
+				RendererObject& item = (*worldObjects->get())[i];
 
 				if (item.type == Type::OBJECT_TYPE::RENDER_OBJECT) {
 
@@ -77,6 +73,7 @@ namespace OpenGLSamples::Based {
 			}
 
 			{
+				Camera* cameraTemp = worldObjects->getCamera();
 				float* pos[3] = { &cameraTemp->position.x,&cameraTemp->position.y ,&cameraTemp->position.z };
 				float* rot[3] = { &cameraTemp->rotation.x,&cameraTemp->rotation.y ,&cameraTemp->rotation.z };
 

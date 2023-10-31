@@ -24,8 +24,8 @@ namespace OpenGLSamples::Based {
 			camera = _camera;
 		}
 
-		std::vector<RendererObject>& get() {
-			return objects;
+		std::vector<RendererObject>* get() {
+			return &objects;
 		}
 
 		Camera* getCamera() {
