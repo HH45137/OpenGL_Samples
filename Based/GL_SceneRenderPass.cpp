@@ -14,6 +14,7 @@ glm::mat4 processCameraInput(GLFWwindow* _window, Camera _camera, float _speed) 
 	return viewMat;
 }
 
+Camera* cameraTemp = nullptr;	//临时保存Camera对象
 
 namespace OpenGLSamples::Based {
 
