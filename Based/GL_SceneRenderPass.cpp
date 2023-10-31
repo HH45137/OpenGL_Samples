@@ -5,6 +5,8 @@
 using namespace OpenGLSamples::Based;
 
 
+GLFWwindow* windowHandle = nullptr;	//窗口句柄
+
 glm::mat4 processCameraInput(GLFWwindow* _window, Camera _camera, float _speed) {
 
 	glm::mat4 viewMat = glm::lookAt(_camera.position, _camera.position + _camera.front, _camera.up);
@@ -15,23 +17,17 @@ glm::mat4 processCameraInput(GLFWwindow* _window, Camera _camera, float _speed) 
 
 namespace OpenGLSamples::Based {
 
-	Camera* cameraTemp = nullptr;	//临时保存Camera对象
-	GLFWwindow* windowHandle = nullptr;	//窗口句柄
-
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
 		windowHandle = (GLFWwindow*)winInfo.handle;
+
+		//获得当前场景的Camera
+		cameraTemp = world.getCamera();
 
 		this->objects = &world.get();
 
 		for (auto& item : *objects)
 		{
-			//遍历到Camera
-			if (item.type == Type::OBJECT_TYPE::CAMERA) {
-				cameraTemp = (Camera*)&item;
-				continue;
-			}
-
 			if (!item.init()) {
 				cout << "RenderObject init error!\n";
 				return false;

@@ -20,8 +20,16 @@ namespace OpenGLSamples::Based {
 			objects = _objects;
 		}
 
+		void set(Camera _camera) {
+			camera = _camera;
+		}
+
 		std::vector<RendererObject>& get() {
 			return objects;
+		}
+
+		Camera* getCamera() {
+			return &camera;
 		}
 
 		void clear() {
@@ -30,6 +38,8 @@ namespace OpenGLSamples::Based {
 
 	private:
 		std::vector<RendererObject> objects;
+
+		Camera camera;
 
 	};
 

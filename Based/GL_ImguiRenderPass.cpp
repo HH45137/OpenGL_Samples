@@ -3,13 +3,19 @@
 #include "GL_ImguiRenderPass.h"
 #include "GL_App.h"
 
+using namespace OpenGLSamples::Based;
+
 
 ImGuiIO* io = NULL;
 
 namespace OpenGLSamples::Based {
 
+	Camera* cameraTemp = nullptr;	//临时保存Camera对象
+
 	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
+		cameraTemp = world.getCamera();
+
 		this->objects = &world.get();
 
 		/*-------------------设置Imgui-------------------*/
@@ -68,20 +74,19 @@ namespace OpenGLSamples::Based {
 					ImGui::SliderFloat((title + "Scaling:").c_str(), &item.scaling.x, -0.0f, 20.0f);
 					item.scaling = glm::vec3(item.scaling.x);
 				}
+			}
 
-				if (item.type == Type::OBJECT_TYPE::CAMERA) {
+			{
+				float* pos[3] = { &cameraTemp->position.x,&cameraTemp->position.y ,&cameraTemp->position.z };
+				float* rot[3] = { &cameraTemp->rotation.x,&cameraTemp->rotation.y ,&cameraTemp->rotation.z };
 
-					float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
-					float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
-
-					std::string title = std::format("Camera:{0} ", i);
-					ImGui::Text(title.c_str());
-					//位置
-					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
-					//旋转
-					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
-				}
+				std::string title = std::format("Camera:{0} ", 0);
+				ImGui::Text(title.c_str());
+				//位置
+				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+				//旋转
+				ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
+				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &cameraTemp->rotationAngle, 0.0f, 360.0f);
 			}
 
 			ImGui::End();
