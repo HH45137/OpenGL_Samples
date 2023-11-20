@@ -37,7 +37,7 @@ void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 
 	//限制角度
 	if (pitch > 89.0f) { pitch = 89.0f; }
-	if (yaw < -89.0f) { pitch = -89.0f; }
+	if (pitch < -89.0f) { pitch = -89.0f; }
 
 	//计算出方向向量
 	glm::vec3 frontTemp;
