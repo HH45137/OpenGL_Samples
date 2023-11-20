@@ -23,6 +23,9 @@ namespace OpenGLSamples::Based {
 		glm::vec3 front = glm::vec3(0.0f, 0.0f, -1.0f);
 		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 
+		glm::vec2 lastCursorPos;	//上一帧的鼠标坐标
+		glm::vec2 currentCursorPos;	//当前帧的鼠标坐标
+
 	private:
 
 	};
