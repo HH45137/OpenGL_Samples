@@ -35,14 +35,17 @@ void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 	yaw += cursorOffset.x;
 	pitch += cursorOffset.y;
 
+	//限制角度
+	if (pitch > 890.0f) { pitch = 890.0f; }
+	if (pitch < -890.0f) { pitch = -890.0f; }
+	std::cout << pitch << "\t" << yaw << "\n";
+
 	//计算出方向向量
 	glm::vec3 frontTemp;
 	frontTemp.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
 	frontTemp.y = sin(glm::radians(pitch));
 	frontTemp.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 	frontTemp = glm::normalize(frontTemp);
-	//限制角度
-	std::cout << frontTemp.x << "\t" << frontTemp.y << "\t" << frontTemp.z << "\n";
 
 	_camera->front = frontTemp;
 }
