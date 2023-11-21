@@ -26,19 +26,20 @@ void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 	_camera->lastCursorPos = _camera->currentCursorPos;
 
 	//设置视角灵敏度
-	float sensitivity = 0.05f;
+	float sensitivity = 0.02f;
 	cursorOffset *= sensitivity;
 
 	//Camera的俯仰角和偏航角
 	double yaw = 0.0f, pitch = 0.0f;
 	glfwGetCursorPos(_window, &yaw, &pitch);
-	yaw += cursorOffset.x;
-	pitch += cursorOffset.y;
 
 	//限制角度
-	if (pitch > 890.0f) { pitch = 890.0f; }
-	if (pitch < -890.0f) { pitch = -890.0f; }
+	if (pitch > 600.0f) { pitch = 600.0f; }
+	if (pitch < 400.0f) { pitch = 400.0f; }
 	std::cout << pitch << "\t" << yaw << "\n";
+
+	yaw += cursorOffset.x;
+	pitch += cursorOffset.y;
 
 	//计算出方向向量
 	glm::vec3 frontTemp;
