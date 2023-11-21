@@ -106,6 +106,7 @@ namespace OpenGLSamples::Based {
 			item.texture.use();
 			item.shader.Use();
 			item.shader.SetUniformValue(item.texture.handle, "texture01");
+			item.shaderInit();
 		}
 
 		return true;
@@ -137,6 +138,7 @@ namespace OpenGLSamples::Based {
 			item.shader.SetUniformValue(modelMat, "model");
 			item.shader.SetUniformValue(viewMat, "view");
 			item.shader.SetUniformValue(projectionMat, "projection");
+			item.shaderUpdate();
 
 			glDrawElements(GL_TRIANGLES, item.mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 			glBindVertexArray(0);

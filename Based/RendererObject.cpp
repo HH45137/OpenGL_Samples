@@ -38,5 +38,19 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
+	int RendererObject::shaderInit()
+	{
+
+
+		return 0;
+	}
+
+	int RendererObject::shaderUpdate()
+	{
+
+
+		return 0;
+	}
+
 }
 

@@ -18,6 +18,9 @@ namespace OpenGLSamples::Based {
 
 		bool init();
 
+		int shaderInit();
+		int shaderUpdate();
+
 	public:
 		Type::OBJECT_TYPE type = Type::OBJECT_TYPE::RENDER_OBJECT;
 
