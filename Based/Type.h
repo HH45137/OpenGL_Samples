@@ -31,6 +31,7 @@ namespace OpenGLSamples {
 		enum OBJECT_TYPE {
 			RENDER_OBJECT = 1,
 			CAMERA,
+			LIGHT_OBJECT,
 			OBJECT_TYPE_COUNT
 		};
 	}
