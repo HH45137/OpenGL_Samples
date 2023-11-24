@@ -10,6 +10,8 @@ OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _r
 	this->position = _position;
 	this->rotation = _rotation;
 	this->scaling = glm::vec3(1.0);
+
+	this->type = Type::OBJECT_TYPE::LIGHT_OBJECT;
 }
 
 int OpenGLSamples::Based::LightObject::shaderInit()
