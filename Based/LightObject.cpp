@@ -4,8 +4,8 @@ OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _r
 {
 	this->meshPath = "..\\assets\\light_model.obj";
 	this->texturePath = "..\\assets\\light_color.png";
-	this->vsPath = "..\\assets\\model_vs.glsl";
-	this->fsPath = "..\\assets\\model_fs.glsl";
+	this->vsPath = "..\\assets\\light_vs.glsl";
+	this->fsPath = "..\\assets\\light_fs.glsl";
 
 	this->position = _position;
 	this->rotation = _rotation;
