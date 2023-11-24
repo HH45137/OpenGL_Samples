@@ -10,6 +10,10 @@ GLFWwindow* windowHandle = nullptr;	//窗口句柄
 //处理摄像机相关的设备输入
 void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 
+	if (glfwGetKey(_window, GLFW_KEY_SPACE) == GLFW_TRUE) {
+		return;
+	}
+
 	//========键盘操作========
 	float _speed = 0.7;
 
@@ -36,7 +40,7 @@ void processCameraInput(GLFWwindow* _window, Camera* _camera) {
 	//限制角度
 	if (pitch > 600.0f) { pitch = 600.0f; }
 	if (pitch < 400.0f) { pitch = 400.0f; }
-	std::cout << pitch << "\t" << yaw << "\n";
+	//std::cout << pitch << "\t" << yaw << "\n";
 
 	yaw += cursorOffset.x;
 	pitch += cursorOffset.y;
