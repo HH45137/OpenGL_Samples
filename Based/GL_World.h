@@ -14,10 +14,14 @@ namespace OpenGLSamples::Based {
 		~GL_World() = default;
 
 		void set(RendererObject _object) {
-			objects.push_back(_object);
+			objects.push_back((void*)&_object);
 		}
 
-		void set(std::vector<RendererObject>& _objects) {
+		void set(LightObject _object) {
+			objects.push_back((void*)&_object);
+		}
+
+		void set(std::vector<void*>& _objects) {
 			objects = _objects;
 		}
 
@@ -25,7 +29,7 @@ namespace OpenGLSamples::Based {
 			camera = _camera;
 		}
 
-		std::vector<RendererObject>* get() {
+		std::vector<void*>* get() {
 			return &objects;
 		}
 
@@ -38,7 +42,7 @@ namespace OpenGLSamples::Based {
 		}
 
 	private:
-		std::vector<RendererObject> objects;
+		std::vector<void*> objects;
 
 		Camera camera;
 

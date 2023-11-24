@@ -51,13 +51,13 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
 			for (size_t i = 0; i < worldObjects->get()->size(); i++) {
-				RendererObject& item = (*worldObjects->get())[i];
+				RendererObject* worldObjItem = (RendererObject*)(*worldObjects->get())[i];
 
-				if (item.type == Type::OBJECT_TYPE::RENDER_OBJECT) {
+				if (worldObjItem->type == Type::OBJECT_TYPE::RENDER_OBJECT) {
 
-					float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
-					float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
-					float* siz[3] = { &item.scaling.x,&item.scaling.y ,&item.scaling.z };
+					float* pos[3] = { &worldObjItem->position.x,&worldObjItem->position.y ,&worldObjItem->position.z };
+					float* rot[3] = { &worldObjItem->rotation.x,&worldObjItem->rotation.y ,&worldObjItem->rotation.z };
+					float* siz[3] = { &worldObjItem->scaling.x,&worldObjItem->scaling.y ,&worldObjItem->scaling.z };
 
 					std::string title = std::format("Object:{0} ", i);
 					ImGui::Text(title.c_str());
@@ -65,10 +65,10 @@ namespace OpenGLSamples::Based {
 					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
 					//Ðý×ª
 					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &worldObjItem->rotationAngle, 0.0f, 360.0f);
 					//Ëõ·Å
-					ImGui::SliderFloat((title + "Scaling:").c_str(), &item.scaling.x, -0.0f, 20.0f);
-					item.scaling = glm::vec3(item.scaling.x);
+					ImGui::SliderFloat((title + "Scaling:").c_str(), &worldObjItem->scaling.x, -0.0f, 20.0f);
+					worldObjItem->scaling = glm::vec3(worldObjItem->scaling.x);
 				}
 			}
 
