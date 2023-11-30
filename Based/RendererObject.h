@@ -4,6 +4,7 @@
 #include "GL_Texture.h"
 #include "Shader.h"
 #include "Type.h"
+#include "Camera.h"
 
 
 namespace OpenGLSamples::Based {
@@ -17,9 +18,11 @@ namespace OpenGLSamples::Based {
 		~RendererObject() = default;
 
 		bool init();
+		int render(Type::win_info_s& winInfo, Camera* _camera);
 
 		int shaderInit();
 		int shaderUpdate();
+		int matrixUpdate(Type::win_info_s& winInfo, Camera* _camera);
 
 	public:
 		Type::OBJECT_TYPE type = Type::OBJECT_TYPE::RENDER_OBJECT;

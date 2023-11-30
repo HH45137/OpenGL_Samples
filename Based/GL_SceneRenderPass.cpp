@@ -5,62 +5,10 @@
 using namespace OpenGLSamples::Based;
 
 
-GLFWwindow* windowHandle = nullptr;	//窗口句柄
-
-//处理摄像机相关的设备输入
-void processCameraInput(GLFWwindow* _window, Camera* _camera) {
-
-	if (glfwGetKey(_window, GLFW_KEY_SPACE) == GLFW_TRUE) {
-		return;
-	}
-
-	//========键盘操作========
-	float _speed = 0.7;
-
-	if (glfwGetKey(_window, GLFW_KEY_W) == GLFW_PRESS) { _camera->position += _speed * _camera->front; }
-	if (glfwGetKey(_window, GLFW_KEY_S) == GLFW_PRESS) { _camera->position -= _speed * _camera->front; }
-
-	if (glfwGetKey(_window, GLFW_KEY_A) == GLFW_PRESS) { _camera->position -= glm::normalize(glm::cross(_camera->front, _camera->up)) * _speed; }
-	if (glfwGetKey(_window, GLFW_KEY_D) == GLFW_PRESS) { _camera->position += glm::normalize(glm::cross(_camera->front, _camera->up)) * _speed; }
-
-
-	//========鼠标操作========
-	glm::vec2 cursorOffset = _camera->currentCursorPos - _camera->lastCursorPos;	//计算鼠标移动的值
-	cursorOffset.y *= -1.0f;	//反转Y轴
-	_camera->lastCursorPos = _camera->currentCursorPos;
-
-	//设置视角灵敏度
-	float sensitivity = 0.02f;
-	cursorOffset *= sensitivity;
-
-	//Camera的俯仰角和偏航角
-	double yaw = 0.0f, pitch = 0.0f;
-	glfwGetCursorPos(_window, &yaw, &pitch);
-
-	//限制角度
-	if (pitch > 600.0f) { pitch = 600.0f; }
-	if (pitch < 400.0f) { pitch = 400.0f; }
-	//std::cout << pitch << "\t" << yaw << "\n";
-
-	yaw += cursorOffset.x;
-	pitch += cursorOffset.y;
-
-	//计算出方向向量
-	glm::vec3 frontTemp;
-	frontTemp.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
-	frontTemp.y = sin(glm::radians(pitch));
-	frontTemp.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	frontTemp = glm::normalize(frontTemp);
-
-	_camera->front = frontTemp;
-}
-
 namespace OpenGLSamples::Based {
 
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
-		windowHandle = (GLFWwindow*)winInfo.handle;
-
 		this->worldObjects = &world;
 
 		for (auto& item : *worldObjects->getRenderObjects())
@@ -72,84 +20,16 @@ namespace OpenGLSamples::Based {
 				return false;
 			}
 
-			//-----设置各种顶点Buffer-----
-			glGenVertexArrays(1, &renderObjItem->mesh.VAO);
-			glGenBuffers(1, &renderObjItem->mesh.VBO);
-			glGenBuffers(1, &renderObjItem->mesh.EBO);
-
-			glBindVertexArray(renderObjItem->mesh.VAO);
-
-			//-----顶点数据-----
-			glBindBuffer(GL_ARRAY_BUFFER, renderObjItem->mesh.VBO);
-			glBufferData(GL_ARRAY_BUFFER, renderObjItem->mesh.vertexes.size() * sizeof(Type::Vertex), renderObjItem->mesh.vertexes.data(), GL_STATIC_DRAW);
-
-			//-----设置顶点数据-----
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)0);
-			glEnableVertexAttribArray(0);
-
-			//-----设置贴图坐标数据-----
-			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(3 * sizeof(GLfloat)));
-			glEnableVertexAttribArray(1);
-
-			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(5 * sizeof(GLfloat)));
-			glEnableVertexAttribArray(2);
-
-			//-----顶点索引数据-----
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderObjItem->mesh.EBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, renderObjItem->mesh.indices.size() * sizeof(GLuint), renderObjItem->mesh.indices.data(), GL_STATIC_DRAW);
-
-			glEnableVertexAttribArray(0);
-
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-			glBindVertexArray(0);
-
-			if (!renderObjItem->texture.init()) {
-				return false;
-			}
-
-			//设置贴图
-			renderObjItem->texture.use();
-			renderObjItem->shader.Use();
-			renderObjItem->shader.SetUniformValue(renderObjItem->texture.handle, "texture01");
-			renderObjItem->shaderInit();
 		}
 
 		return true;
 	}
 
-	void GL_SceneRenderPass::render()
+	void GL_SceneRenderPass::render(Type::win_info_s& winInfo, GL_World& world)
 	{
-		Camera* cameraTemp = worldObjects->getCamera();
-
 		for (auto& item : *worldObjects->getRenderObjects()) {
 			RendererObject* renderObjItem = &item;
-
-			renderObjItem->shader.Use();
-			renderObjItem->texture.use();
-
-			glBindVertexArray(renderObjItem->mesh.VAO);
-
-			//记住！必须要先初始化矩阵为1，不然要出大问题
-			glm::mat4 viewMat = glm::mat4(1.0f);
-			glm::mat4 projectionMat = glm::mat4(1.0f);
-			glm::mat4 modelMat = glm::mat4(1.0f);
-
-			modelMat = glm::translate(modelMat, renderObjItem->position);
-			modelMat = glm::rotate(modelMat, glm::radians(renderObjItem->rotationAngle), renderObjItem->rotation);
-			modelMat = glm::scale(modelMat, renderObjItem->scaling);
-
-			processCameraInput(windowHandle, cameraTemp);
-			viewMat = glm::lookAt(cameraTemp->position, cameraTemp->position + cameraTemp->front, cameraTemp->up);
-			projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
-
-			renderObjItem->shader.SetUniformValue(modelMat, "model");
-			renderObjItem->shader.SetUniformValue(viewMat, "view");
-			renderObjItem->shader.SetUniformValue(projectionMat, "projection");
-			renderObjItem->shaderUpdate();
-
-			glDrawElements(GL_TRIANGLES, renderObjItem->mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
-			glBindVertexArray(0);
+			renderObjItem->render(winInfo, world.getCamera());
 		}
 	}
 

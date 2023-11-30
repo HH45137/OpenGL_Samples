@@ -3,7 +3,6 @@
 #include "RendererObject.h"
 #include "Camera.h"
 #include "LightObject.h"
-#include <any>
 
 
 namespace OpenGLSamples::Based {

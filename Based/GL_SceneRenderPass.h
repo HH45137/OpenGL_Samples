@@ -15,7 +15,7 @@ namespace OpenGLSamples {
 
 			bool init(Type::win_info_s& winInfo, GL_World& world);
 
-			void render();
+			void render(Type::win_info_s& winInfo, GL_World& world);
 
 			void close();
 
