@@ -40,48 +40,7 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-
-		//-----设置各种顶点Buffer-----
-		glGenVertexArrays(1, &mesh.VAO);
-		glGenBuffers(1, &mesh.VBO);
-		glGenBuffers(1, &mesh.EBO);
-
-		glBindVertexArray(mesh.VAO);
-
-		//-----顶点数据-----
-		glBindBuffer(GL_ARRAY_BUFFER, mesh.VBO);
-		glBufferData(GL_ARRAY_BUFFER, mesh.vertexes.size() * sizeof(Type::Vertex), mesh.vertexes.data(), GL_STATIC_DRAW);
-
-		//-----设置顶点数据-----
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)0);
-		glEnableVertexAttribArray(0);
-
-		//-----设置贴图坐标数据-----
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(3 * sizeof(GLfloat)));
-		glEnableVertexAttribArray(1);
-
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(5 * sizeof(GLfloat)));
-		glEnableVertexAttribArray(2);
-
-		//-----顶点索引数据-----
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(GLuint), mesh.indices.data(), GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glBindVertexArray(0);
-
-		if (!texture.init()) {
-			return false;
-		}
-
-		//设置贴图
-		texture.use();
-		shader.Use();
-		shader.SetUniformValue(texture.handle, "texture01");
-		shaderInit();
+		setGLState();
 
 		return true;
 	}
@@ -134,6 +93,53 @@ namespace OpenGLSamples::Based {
 		shader.SetUniformValue(modelMat, "model");
 		shader.SetUniformValue(viewMat, "view");
 		shader.SetUniformValue(projectionMat, "projection");
+
+		return 0;
+	}
+
+	int RendererObject::setGLState()
+	{
+		//-----设置各种顶点Buffer-----
+		glGenVertexArrays(1, &mesh.VAO);
+		glGenBuffers(1, &mesh.VBO);
+		glGenBuffers(1, &mesh.EBO);
+
+		glBindVertexArray(mesh.VAO);
+
+		//-----顶点数据-----
+		glBindBuffer(GL_ARRAY_BUFFER, mesh.VBO);
+		glBufferData(GL_ARRAY_BUFFER, mesh.vertexes.size() * sizeof(Type::Vertex), mesh.vertexes.data(), GL_STATIC_DRAW);
+
+		//-----设置顶点数据-----
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)0);
+		glEnableVertexAttribArray(0);
+
+		//-----设置贴图坐标数据-----
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(3 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(1);
+
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Type::Vertex), (GLvoid*)(5 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(2);
+
+		//-----顶点索引数据-----
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(GLuint), mesh.indices.data(), GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		glBindVertexArray(0);
+
+		if (!texture.init()) {
+			return false;
+		}
+
+		//设置贴图
+		texture.use();
+		shader.Use();
+		shader.SetUniformValue(texture.handle, "texture01");
+		shaderInit();
 
 		return 0;
 	}

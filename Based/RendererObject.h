@@ -23,6 +23,7 @@ namespace OpenGLSamples::Based {
 		int shaderInit();
 		int shaderUpdate();
 		int matrixUpdate(Type::win_info_s* _winInfo, Camera* _camera);
+		int setGLState();
 
 	public:
 		Type::OBJECT_TYPE type = Type::OBJECT_TYPE::RENDER_OBJECT;
