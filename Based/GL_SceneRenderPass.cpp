@@ -10,6 +10,7 @@ namespace OpenGLSamples::Based {
 	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
 	{
 		this->worldObjects = &world;
+		this->winInfo = &winInfo;
 
 		for (auto& item : *worldObjects->getRenderObjects())
 		{
@@ -25,11 +26,11 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
-	void GL_SceneRenderPass::render(Type::win_info_s& winInfo, GL_World& world)
+	void GL_SceneRenderPass::render()
 	{
 		for (auto& item : *worldObjects->getRenderObjects()) {
 			RendererObject* renderObjItem = &item;
-			renderObjItem->render(winInfo, world.getCamera());
+			renderObjItem->render(this->winInfo, this->worldObjects->getCamera());
 		}
 	}
 

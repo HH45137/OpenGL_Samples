@@ -18,11 +18,11 @@ namespace OpenGLSamples::Based {
 		~RendererObject() = default;
 
 		bool init();
-		int render(Type::win_info_s& winInfo, Camera* _camera);
+		int render(Type::win_info_s* _winInfo, Camera* _camera);
 
 		int shaderInit();
 		int shaderUpdate();
-		int matrixUpdate(Type::win_info_s& winInfo, Camera* _camera);
+		int matrixUpdate(Type::win_info_s* _winInfo, Camera* _camera);
 
 	public:
 		Type::OBJECT_TYPE type = Type::OBJECT_TYPE::RENDER_OBJECT;

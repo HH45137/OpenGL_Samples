@@ -133,14 +133,14 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
-	int RendererObject::render(Type::win_info_s& winInfo, Camera* _camera)
+	int RendererObject::render(Type::win_info_s* _winInfo, Camera* _camera)
 	{
 		shader.Use();
 		texture.use();
 
 		glBindVertexArray(mesh.VAO);
 
-		matrixUpdate(winInfo, _camera);
+		matrixUpdate(_winInfo, _camera);
 		shaderUpdate();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
@@ -163,7 +163,7 @@ namespace OpenGLSamples::Based {
 		return 0;
 	}
 
-	int RendererObject::matrixUpdate(Type::win_info_s& winInfo, Camera* _camera)
+	int RendererObject::matrixUpdate(Type::win_info_s* _winInfo, Camera* _camera)
 	{
 		//记住！必须要先初始化矩阵为1，不然要出大问题
 		glm::mat4 viewMat = glm::mat4(1.0f);
@@ -174,7 +174,7 @@ namespace OpenGLSamples::Based {
 		modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), rotation);
 		modelMat = glm::scale(modelMat, scaling);
 
-		processCameraInput((GLFWwindow*)winInfo.handle, _camera);
+		processCameraInput((GLFWwindow*)_winInfo->handle, _camera);
 		viewMat = glm::lookAt(_camera->position, _camera->position + _camera->front, _camera->up);
 		projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
