@@ -70,7 +70,7 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::shaderUpdate()
 	{
-
+		shader.SetUniformValue(glm::vec3(1.0f, 0.5f, 0.2f), "lightColor");
 
 		return 0;
 	}

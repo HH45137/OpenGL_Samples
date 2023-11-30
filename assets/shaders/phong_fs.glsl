@@ -5,10 +5,12 @@ in vec4 oColor;
 in vec2 UV;
 
 uniform sampler2D texture01;
+uniform vec3 lightColor;
 
 void main()
 {
-//	FragColor = vec4(UV, 1.0f, 1.0f);
+	float ambientStrength = 0.1;
+	vec4 ambient = vec4(ambientStrength * lightColor, 1.0f);
 
-	FragColor = texture(texture01, UV);
+	FragColor = texture(texture01, UV) * ambient;
 }
