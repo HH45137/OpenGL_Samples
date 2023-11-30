@@ -19,6 +19,9 @@
     <Filter Include="Imgui\backends">
       <UniqueIdentifier>{7adf65a6-eb54-4cbe-a207-e9dcfd91a50e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{b196d885-daf7-462b-89f4-b505960a0c48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,6 +84,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="..\assets\shaders\light_fs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\light_vs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\model_fs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\model_vs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\phong_fs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\phong_vs.glsl">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Type.h">
