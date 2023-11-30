@@ -3,6 +3,7 @@
 #include "RendererObject.h"
 #include "Camera.h"
 #include "LightObject.h"
+#include <any>
 
 
 namespace OpenGLSamples::Based {
@@ -14,14 +15,14 @@ namespace OpenGLSamples::Based {
 		~GL_World() = default;
 
 		void set(RendererObject _object) {
-			objects.push_back((void*)&_object);
+			objects.push_back((std::any)&_object);
 		}
 
 		void set(LightObject _object) {
-			objects.push_back((void*)&_object);
+			objects.push_back((std::any)&_object);
 		}
 
-		void set(std::vector<void*>& _objects) {
+		void set(std::vector<std::any>& _objects) {
 			objects = _objects;
 		}
 
@@ -29,7 +30,7 @@ namespace OpenGLSamples::Based {
 			camera = _camera;
 		}
 
-		std::vector<void*>* get() {
+		std::vector<std::any>* get() {
 			return &objects;
 		}
 
@@ -42,7 +43,7 @@ namespace OpenGLSamples::Based {
 		}
 
 	private:
-		std::vector<void*> objects;
+		std::vector<std::any> objects;
 
 		Camera camera;
 

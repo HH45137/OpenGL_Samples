@@ -50,26 +50,28 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("This is some option");
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
-			for (size_t i = 0; i < worldObjects->get()->size(); i++) {
-				RendererObject* worldObjItem = (RendererObject*)(*worldObjects->get())[i];
+			int indexTemp = 0;
+			for (auto& item : *worldObjects->get()) {
+				RendererObject* renderObjItem = std::any_cast<RendererObject*>(item);
 
-				if (worldObjItem->type == Type::OBJECT_TYPE::RENDER_OBJECT) {
+				if (renderObjItem->type == Type::OBJECT_TYPE::RENDER_OBJECT) {
 
-					float* pos[3] = { &worldObjItem->position.x,&worldObjItem->position.y ,&worldObjItem->position.z };
-					float* rot[3] = { &worldObjItem->rotation.x,&worldObjItem->rotation.y ,&worldObjItem->rotation.z };
-					float* siz[3] = { &worldObjItem->scaling.x,&worldObjItem->scaling.y ,&worldObjItem->scaling.z };
+					float* pos[3] = { &renderObjItem->position.x,&renderObjItem->position.y ,&renderObjItem->position.z };
+					float* rot[3] = { &renderObjItem->rotation.x,&renderObjItem->rotation.y ,&renderObjItem->rotation.z };
+					float* siz[3] = { &renderObjItem->scaling.x,&renderObjItem->scaling.y ,&renderObjItem->scaling.z };
 
-					std::string title = std::format("Object:{0} ", i);
+					std::string title = std::format("Object:{0} ", indexTemp);
 					ImGui::Text(title.c_str());
 					//Î»ÖÃ
 					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
 					//Ðý×ª
 					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &worldObjItem->rotationAngle, 0.0f, 360.0f);
+					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &renderObjItem->rotationAngle, 0.0f, 360.0f);
 					//Ëõ·Å
-					ImGui::SliderFloat((title + "Scaling:").c_str(), &worldObjItem->scaling.x, -0.0f, 20.0f);
-					worldObjItem->scaling = glm::vec3(worldObjItem->scaling.x);
+					ImGui::SliderFloat((title + "Scaling:").c_str(), &renderObjItem->scaling.x, -0.0f, 20.0f);
+					renderObjItem->scaling = glm::vec3(renderObjItem->scaling.x);
 				}
+				indexTemp++;
 			}
 
 			{
