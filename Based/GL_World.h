@@ -19,7 +19,7 @@ namespace OpenGLSamples::Based {
 		}
 
 		void set(LightObject _light) {
-			objects.push_back(_light);
+			lights.push_back(_light);
 		}
 
 		void set(Camera _camera) {
