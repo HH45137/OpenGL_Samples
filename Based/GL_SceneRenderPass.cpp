@@ -63,9 +63,9 @@ namespace OpenGLSamples::Based {
 
 		this->worldObjects = &world;
 
-		for (auto& item : *worldObjects->get())
+		for (auto& item : *worldObjects->getRenderObjects())
 		{
-			RendererObject* renderObjItem = std::any_cast<RendererObject*>(item);
+			RendererObject* renderObjItem = &item;
 
 			if (!renderObjItem->init()) {
 				cout << "RenderObject init error!\n";
@@ -122,8 +122,8 @@ namespace OpenGLSamples::Based {
 	{
 		Camera* cameraTemp = worldObjects->getCamera();
 
-		for (auto& item : *worldObjects->get()) {
-			RendererObject* renderObjItem = std::any_cast<RendererObject*>(item);
+		for (auto& item : *worldObjects->getRenderObjects()) {
+			RendererObject* renderObjItem = &item;
 
 			renderObjItem->shader.Use();
 			renderObjItem->texture.use();

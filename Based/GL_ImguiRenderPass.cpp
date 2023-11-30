@@ -51,8 +51,8 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
 			int indexTemp = 0;
-			for (auto& item : *worldObjects->get()) {
-				RendererObject* renderObjItem = std::any_cast<RendererObject*>(item);
+			for (auto& item : *worldObjects->getRenderObjects()) {
+				RendererObject* renderObjItem = &item;
 
 				if (renderObjItem->type == Type::OBJECT_TYPE::RENDER_OBJECT) {
 
