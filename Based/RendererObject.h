@@ -12,7 +12,7 @@ namespace OpenGLSamples::Based {
 	class RendererObject
 	{
 	public:
-		RendererObject(std::string _meshPath, std::string _texturePath, std::string _vsPath, std::string _fsPath, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling);
+		RendererObject(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling);
 
 		RendererObject() = default;
 		~RendererObject() = default;

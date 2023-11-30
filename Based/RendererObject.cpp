@@ -2,17 +2,18 @@
 #include "gl_App.h"
 #include "GL_SceneRenderPass.h"
 #include "InputProcess.h"
+#include "Common.h"
 
 using namespace OpenGLSamples::Based;
 
 namespace OpenGLSamples::Based {
 
-	RendererObject::RendererObject(std::string _meshPath, std::string _texturePath, std::string _vsPath, std::string _fsPath, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling)
+	RendererObject::RendererObject(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling)
 	{
-		this->meshPath = _meshPath;
-		this->texturePath = _texturePath;
-		this->vsPath = _vsPath;
-		this->fsPath = _fsPath;
+		this->meshPath = MESHS_BASE_DIR + _meshName;
+		this->texturePath = TEXTURE_BASE_DIR + _textureName;
+		this->vsPath = SHADER_BASE_DIR + _vsName;
+		this->fsPath = SHADER_BASE_DIR + _fsName;
 
 		this->position = _position;
 		this->rotation = _rotation;
