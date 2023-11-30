@@ -50,42 +50,51 @@ namespace OpenGLSamples::Based {
 			ImGui::Text("This is some option");
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / (*io).Framerate, (*io).Framerate);
 
-			int indexTemp = 0;
-			for (auto& item : *worldObjects->getRenderObjects()) {
-				RendererObject* renderObjItem = &item;
+			//普通渲染对象相关
+			int indexTempRO = 0;
+			for (RendererObject& item : *worldObjects->getRenderObjects()) {
 
-				if (renderObjItem->type == Type::OBJECT_TYPE::RENDER_OBJECT) {
+				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
+				float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
+				float* siz[3] = { &item.scaling.x,&item.scaling.y ,&item.scaling.z };
 
-					float* pos[3] = { &renderObjItem->position.x,&renderObjItem->position.y ,&renderObjItem->position.z };
-					float* rot[3] = { &renderObjItem->rotation.x,&renderObjItem->rotation.y ,&renderObjItem->rotation.z };
-					float* siz[3] = { &renderObjItem->scaling.x,&renderObjItem->scaling.y ,&renderObjItem->scaling.z };
-
-					std::string title = std::format("Object:{0} ", indexTemp);
-					ImGui::Text(title.c_str());
-					//位置
-					ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
-					//旋转
-					ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-					ImGui::SliderFloat((title + "Rotation angle:").c_str(), &renderObjItem->rotationAngle, 0.0f, 360.0f);
-					//缩放
-					ImGui::SliderFloat((title + "Scaling:").c_str(), &renderObjItem->scaling.x, -0.0f, 20.0f);
-					renderObjItem->scaling = glm::vec3(renderObjItem->scaling.x);
-				}
-				indexTemp++;
-			}
-
-			{
-				Camera* cameraTemp = worldObjects->getCamera();
-				float* pos[3] = { &cameraTemp->position.x,&cameraTemp->position.y ,&cameraTemp->position.z };
-				float* rot[3] = { &cameraTemp->rotation.x,&cameraTemp->rotation.y ,&cameraTemp->rotation.z };
-
-				std::string title = std::format("Camera:{0} ", 0);
+				std::string title = std::format("Object:{0} ", indexTempRO);
 				ImGui::Text(title.c_str());
 				//位置
 				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
 				//旋转
 				ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &cameraTemp->rotationAngle, 0.0f, 360.0f);
+				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+				//缩放
+				ImGui::SliderFloat((title + "Scaling:").c_str(), &item.scaling.x, -0.0f, 20.0f);
+				item.scaling = glm::vec3(item.scaling.x);
+
+				indexTempRO++;
+			}
+
+			//灯光相关
+			int indexTempLO = 0;
+			for (RendererObject& item : *worldObjects->getLightObjects()) {
+
+				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
+
+				std::string title = std::format("Light:{0} ", indexTempLO);
+				ImGui::Text(title.c_str());
+				//位置
+				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+
+				indexTempLO++;
+			}
+
+			//Camera相关
+			{
+				Camera* cameraTemp = worldObjects->getCamera();
+				float* pos[3] = { &cameraTemp->position.x,&cameraTemp->position.y ,&cameraTemp->position.z };
+
+				std::string title = std::format("Camera:{0} ", 0);
+				ImGui::Text(title.c_str());
+				//位置
+				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
 			}
 
 			ImGui::End();
