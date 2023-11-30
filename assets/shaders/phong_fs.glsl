@@ -3,9 +3,11 @@
 out vec4 FragColor;
 in vec4 oColor;
 in vec2 UV;
+in vec3 oNormal;
 
 uniform sampler2D texture01;
 uniform vec3 lightColor;
+uniform vec3 lightPos;
 
 void main()
 {
