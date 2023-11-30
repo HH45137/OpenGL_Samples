@@ -21,6 +21,15 @@ namespace OpenGLSamples::Based {
 			}
 		}
 
+		//初始化灯光模型
+		for (LightObject& item : *worldObjects->getLightObjects())
+		{
+			if (!item.init()) {
+				cout << "LightObject init error!\n";
+				return false;
+			}
+		}
+
 		return true;
 	}
 
@@ -28,6 +37,11 @@ namespace OpenGLSamples::Based {
 	{
 		//渲染普通模型
 		for (RendererObject& item : *worldObjects->getRenderObjects()) {
+			item.render(this->winInfo, this->worldObjects->getCamera());
+		}
+
+		//渲染灯光模型
+		for (LightObject& item : *worldObjects->getLightObjects()) {
 			item.render(this->winInfo, this->worldObjects->getCamera());
 		}
 	}
