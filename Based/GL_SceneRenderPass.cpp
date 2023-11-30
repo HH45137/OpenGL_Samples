@@ -12,15 +12,13 @@ namespace OpenGLSamples::Based {
 		this->worldObjects = &world;
 		this->winInfo = &winInfo;
 
-		for (auto& item : *worldObjects->getRenderObjects())
+		//初始化普通模型
+		for (RendererObject& item : *worldObjects->getRenderObjects())
 		{
-			RendererObject* renderObjItem = &item;
-
-			if (!renderObjItem->init()) {
+			if (!item.init()) {
 				cout << "RenderObject init error!\n";
 				return false;
 			}
-
 		}
 
 		return true;
@@ -28,9 +26,9 @@ namespace OpenGLSamples::Based {
 
 	void GL_SceneRenderPass::render()
 	{
-		for (auto& item : *worldObjects->getRenderObjects()) {
-			RendererObject* renderObjItem = &item;
-			renderObjItem->render(this->winInfo, this->worldObjects->getCamera());
+		//渲染普通模型
+		for (RendererObject& item : *worldObjects->getRenderObjects()) {
+			item.render(this->winInfo, this->worldObjects->getCamera());
 		}
 	}
 
