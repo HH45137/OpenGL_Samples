@@ -33,7 +33,7 @@ namespace OpenGLSamples::Based {
 
 		GL_Mesh mesh;
 		GL_Texture texture;
-		Shader_Phong* shader;
+		Shader* shader;
 
 		float rotationAngle = 0;							//Ðý×ª½Ç¶È
 		glm::vec3 position = glm::vec3(0.0f);				//Î»ÖÃ	

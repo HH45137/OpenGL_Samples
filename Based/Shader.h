@@ -63,8 +63,8 @@ namespace OpenGLSamples::Based {
 		//¹Ø±Õ×ÅÉ«Æ÷
 		void Close();
 
-		int inInit();
-		int inUpdate();
+		virtual int inInit();
+		virtual int inUpdate();
 
 	private:
 
