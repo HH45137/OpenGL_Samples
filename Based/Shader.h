@@ -24,9 +24,10 @@ namespace OpenGLSamples::Based {
 	private:
 
 	public:
-		Shader(std::string vertexSourceCodePath, std::string fragmentSourceCodePath);
-
 		Shader();
+
+		//初始化着色器
+		void init(std::string _vertexSourceCodePath, std::string _fragmentSourceCodePath);
 
 		//读取着色器代码
 		std::string ReadShaderCode(const char* path);

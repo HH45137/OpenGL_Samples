@@ -2,11 +2,7 @@
 
 
 namespace OpenGLSamples::Based {
-	
-	Shader_Phong::Shader_Phong(std::string vertexSourceCodePath, std::string fragmentSourceCodePath)
-	{
-		Shader(vertexSourceCodePath, fragmentSourceCodePath);
-	}
+
 	Shader_Phong::Shader_Phong()
 	{
 

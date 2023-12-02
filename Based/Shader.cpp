@@ -47,11 +47,13 @@ namespace OpenGLSamples::Based {
 		return success;
 	}
 
-	Shader::Shader(std::string vertexSourceCodePath, std::string fragmentSourceCodePath)
+	Shader::Shader() {}
+
+	void Shader::init(std::string _vertexSourceCodePath, std::string _fragmentSourceCodePath)
 	{
 		//-----读取着色器-----
-		std::string vertexShaderSource = ReadShaderCode(vertexSourceCodePath.c_str());
-		std::string frgmentShaderSource = ReadShaderCode(fragmentSourceCodePath.c_str());
+		std::string vertexShaderSource = ReadShaderCode(_vertexSourceCodePath.c_str());
+		std::string frgmentShaderSource = ReadShaderCode(_fragmentSourceCodePath.c_str());
 		const char* vertexShaderCode = vertexShaderSource.c_str();
 		const char* frgmentShaderCode = frgmentShaderSource.c_str();
 
@@ -83,8 +85,6 @@ namespace OpenGLSamples::Based {
 		glDeleteShader(vertexShader);
 		glDeleteShader(fagmentShader);
 	}
-
-	Shader::Shader() {}
 
 	//设置着色器Uniform值 Int32
 	void Shader::SetUniformValue(GLint intVal, const char* name)

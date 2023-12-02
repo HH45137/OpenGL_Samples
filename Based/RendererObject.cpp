@@ -3,6 +3,7 @@
 #include "GL_SceneRenderPass.h"
 #include "InputProcess.h"
 #include "Common.h"
+#include "Shader_Phong.h"
 
 using namespace OpenGLSamples::Based;
 
@@ -34,12 +35,13 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		shader = Shader(vsPath, fsPath);
+		shader = Shader_Phong();
+		shader.init(vsPath, fsPath);
 		if (shader.id == -1) {
 			cout << "Shader init error!\n";
 			return false;
 		}
-		
+
 		setGLState();
 
 		return true;
