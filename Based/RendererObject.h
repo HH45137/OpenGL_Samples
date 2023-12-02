@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include "Type.h"
 #include "Camera.h"
+#include "Shader_Phong.h"
 
 
 namespace OpenGLSamples::Based {
@@ -32,7 +33,7 @@ namespace OpenGLSamples::Based {
 
 		GL_Mesh mesh;
 		GL_Texture texture;
-		Shader shader;
+		Shader_Phong* shader;
 
 		float rotationAngle = 0;							//Ðý×ª½Ç¶È
 		glm::vec3 position = glm::vec3(0.0f);				//Î»ÖÃ	

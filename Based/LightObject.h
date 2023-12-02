@@ -13,8 +13,6 @@ namespace OpenGLSamples::Based {
 
 		int render(Type::win_info_s* _winInfo, Camera* _camera);
 
-		int shaderInit();
-		int shaderUpdate();
 		int matrixUpdate(Type::win_info_s* _winInfo, Camera* _camera);
 		int setGLState();
 

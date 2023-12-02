@@ -35,9 +35,9 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		shader = Shader_Phong();
-		shader.init(vsPath, fsPath);
-		if (shader.id == -1) {
+		shader = new Shader_Phong();
+		shader->init(vsPath, fsPath);
+		if (shader->id == -1) {
 			cout << "Shader init error!\n";
 			return false;
 		}
@@ -49,13 +49,13 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::render(Type::win_info_s* _winInfo, Camera* _camera)
 	{
-		shader.Use();
+		shader->Use();
 		texture.use();
 
 		glBindVertexArray(mesh.VAO);
 
 		matrixUpdate(_winInfo, _camera);
-		shader.inInit();
+		shader->inInit();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);
@@ -78,9 +78,9 @@ namespace OpenGLSamples::Based {
 		viewMat = glm::lookAt(_camera->position, _camera->position + _camera->front, _camera->up);
 		projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
-		shader.SetUniformValue(modelMat, "model");
-		shader.SetUniformValue(viewMat, "view");
-		shader.SetUniformValue(projectionMat, "projection");
+		shader->SetUniformValue(modelMat, "model");
+		shader->SetUniformValue(viewMat, "view");
+		shader->SetUniformValue(projectionMat, "projection");
 
 		return 0;
 	}
@@ -125,9 +125,9 @@ namespace OpenGLSamples::Based {
 
 		//ÉèÖÃÌùÍ¼
 		texture.use();
-		shader.Use();
-		shader.SetUniformValue(texture.handle, "texture01");
-		shader.inUpdate();
+		shader->Use();
+		shader->SetUniformValue(texture.handle, "texture01");
+		shader->inUpdate();
 
 		return 0;
 	}

@@ -22,30 +22,15 @@ OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _r
 
 int OpenGLSamples::Based::LightObject::render(Type::win_info_s* _winInfo, Camera* _camera)
 {
-	shader.Use();
+	shader->Use();
 	texture.use();
 
 	glBindVertexArray(mesh.VAO);
 
 	matrixUpdate(_winInfo, _camera);
-	shaderUpdate();
 
 	glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 	glBindVertexArray(0);
-
-	return 0;
-}
-
-int OpenGLSamples::Based::LightObject::shaderInit()
-{
-
-
-	return 0;
-}
-
-int OpenGLSamples::Based::LightObject::shaderUpdate()
-{
-
 
 	return 0;
 }
@@ -65,9 +50,9 @@ int OpenGLSamples::Based::LightObject::matrixUpdate(Type::win_info_s* _winInfo, 
 	viewMat = glm::lookAt(_camera->position, _camera->position + _camera->front, _camera->up);
 	projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
-	shader.SetUniformValue(modelMat, "model");
-	shader.SetUniformValue(viewMat, "view");
-	shader.SetUniformValue(projectionMat, "projection");
+	shader->SetUniformValue(modelMat, "model");
+	shader->SetUniformValue(viewMat, "view");
+	shader->SetUniformValue(projectionMat, "projection");
 
 	return 0;
 }
@@ -112,9 +97,8 @@ int OpenGLSamples::Based::LightObject::setGLState()
 
 	//ÉèÖÃÌùÍ¼
 	texture.use();
-	shader.Use();
-	shader.SetUniformValue(texture.handle, "texture01");
-	shaderInit();
+	shader->Use();
+	shader->SetUniformValue(texture.handle, "texture01");
 
 	return 0;
 }
