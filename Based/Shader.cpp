@@ -159,4 +159,14 @@ namespace OpenGLSamples::Based {
 		glDeleteProgram(id);
 	}
 
+	int Shader::inInit()
+	{
+		return 0;
+	}
+
+	int Shader::inUpdate()
+	{
+		return 0;
+	}
+
 }
