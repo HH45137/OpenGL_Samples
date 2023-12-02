@@ -21,6 +21,8 @@ namespace OpenGLSamples::Based {
 	public:
 		GLint id = -1;
 
+	private:
+
 	public:
 		Shader(std::string vertexSourceCodePath, std::string fragmentSourceCodePath);
 
@@ -59,6 +61,13 @@ namespace OpenGLSamples::Based {
 
 		//¹Ø±Õ×ÅÉ«Æ÷
 		void Close();
+
+		virtual int inInit();
+
+		virtual int inUpdate();
+
+	private:
+
 	};
 
 }

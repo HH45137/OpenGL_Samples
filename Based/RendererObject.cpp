@@ -39,7 +39,7 @@ namespace OpenGLSamples::Based {
 			cout << "Shader init error!\n";
 			return false;
 		}
-
+		
 		setGLState();
 
 		return true;
@@ -53,24 +53,9 @@ namespace OpenGLSamples::Based {
 		glBindVertexArray(mesh.VAO);
 
 		matrixUpdate(_winInfo, _camera);
-		shaderUpdate();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);
-
-		return 0;
-	}
-
-	int RendererObject::shaderInit()
-	{
-
-
-		return 0;
-	}
-
-	int RendererObject::shaderUpdate()
-	{
-		shader.SetUniformValue(glm::vec3(1.0f, 0.5f, 0.2f), "lightColor");
 
 		return 0;
 	}
@@ -139,7 +124,6 @@ namespace OpenGLSamples::Based {
 		texture.use();
 		shader.Use();
 		shader.SetUniformValue(texture.handle, "texture01");
-		shaderInit();
 
 		return 0;
 	}

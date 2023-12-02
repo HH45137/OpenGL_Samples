@@ -153,6 +153,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RendererObject.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Shader_Phong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\assets\shaders\light_fs.glsl">
@@ -199,6 +200,7 @@
     <ClInclude Include="GL_SceneRenderPass.h" />
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Shader_Phong.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
