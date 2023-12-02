@@ -28,6 +28,7 @@ int OpenGLSamples::Based::LightObject::render(Type::win_info_s* _winInfo, Camera
 	glBindVertexArray(mesh.VAO);
 
 	matrixUpdate(_winInfo, _camera);
+	shader->inInit();
 
 	glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 	glBindVertexArray(0);
@@ -99,6 +100,7 @@ int OpenGLSamples::Based::LightObject::setGLState()
 	texture.use();
 	shader->Use();
 	shader->SetUniformValue(texture.handle, "texture01");
+	shader->inUpdate();
 
 	return 0;
 }
