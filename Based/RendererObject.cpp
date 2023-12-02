@@ -35,7 +35,7 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		shader = new Shader_Phong();
+		choiceShaderType();
 		shader->init(vsPath, fsPath);
 		if (shader->id == -1) {
 			cout << "Shader init error!\n";
@@ -128,6 +128,13 @@ namespace OpenGLSamples::Based {
 		shader->Use();
 		shader->SetUniformValue(texture.handle, "texture01");
 		shader->inUpdate();
+
+		return 0;
+	}
+
+	int RendererObject::choiceShaderType()
+	{
+		shader = new Shader_Phong();
 
 		return 0;
 	}

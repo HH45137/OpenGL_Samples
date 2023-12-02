@@ -41,6 +41,7 @@ namespace OpenGLSamples::Based {
 		glm::vec3 scaling = glm::vec3(1.0f);				//ด๓ะก
 
 	private:
+		int choiceShaderType();
 
 	};
 

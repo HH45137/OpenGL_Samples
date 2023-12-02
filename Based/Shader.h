@@ -14,6 +14,8 @@
 #include <sstream>
 #include <fstream>
 
+#include "Type.h"
+
 namespace OpenGLSamples::Based {
 
 	class Shader

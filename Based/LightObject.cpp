@@ -104,3 +104,10 @@ int OpenGLSamples::Based::LightObject::setGLState()
 
 	return 0;
 }
+
+int OpenGLSamples::Based::LightObject::choiceShaderType()
+{
+	shader = new Shader();
+
+	return 0;
+}

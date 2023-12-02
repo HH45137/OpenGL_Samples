@@ -4,7 +4,7 @@
 
 namespace OpenGLSamples::Based {
 
-	class LightObject :public RendererObject
+	class LightObject : public RendererObject
 	{
 	public:
 		LightObject(glm::vec3 _position, glm::vec3 _rotation, float _illumination);
@@ -20,6 +20,6 @@ namespace OpenGLSamples::Based {
 		float illumination;	//π‚’’«ø∂»
 
 	private:
-
+		int choiceShaderType();
 	};
 }
