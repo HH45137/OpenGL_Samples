@@ -10,7 +10,7 @@ namespace OpenGLSamples {
 		class RenderPass
 		{
 		public:
-			virtual bool init(Type::win_info_s& winInfo, GL_World& world) = 0;
+			virtual bool init() = 0;
 
 			virtual void render() = 0;
 

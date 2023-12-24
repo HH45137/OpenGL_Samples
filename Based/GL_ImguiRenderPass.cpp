@@ -2,6 +2,7 @@
 
 #include "GL_ImguiRenderPass.h"
 #include "GL_App.h"
+#include "Common.h"
 
 using namespace OpenGLSamples::Based;
 
@@ -10,10 +11,8 @@ ImGuiIO* io = NULL;
 
 namespace OpenGLSamples::Based {
 
-	bool GL_ImguiRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
+	bool GL_ImguiRenderPass::init()
 	{
-		this->worldObjects = &world;
-
 		/*-------------------设置Imgui-------------------*/
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -52,11 +51,11 @@ namespace OpenGLSamples::Based {
 
 			//普通渲染对象相关
 			int indexTempRO = 0;
-			for (RendererObject& item : *worldObjects->getRenderObjects()) {
+			for (auto item : world.getRenderObjects()) {
 
-				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
-				float* rot[3] = { &item.rotation.x,&item.rotation.y ,&item.rotation.z };
-				float* siz[3] = { &item.scaling.x,&item.scaling.y ,&item.scaling.z };
+				float* pos[3] = { &item->position.x,&item->position.y ,&item->position.z };
+				float* rot[3] = { &item->rotation.x,&item->rotation.y ,&item->rotation.z };
+				float* siz[3] = { &item->scaling.x,&item->scaling.y ,&item->scaling.z };
 
 				std::string title = std::format("Object:{0} ", indexTempRO);
 				ImGui::Text(title.c_str());
@@ -64,19 +63,19 @@ namespace OpenGLSamples::Based {
 				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
 				//旋转
 				ImGui::SliderFloat3((title + "Rotation axis:").c_str(), *rot, 0.0f, 1.0f);
-				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item.rotationAngle, 0.0f, 360.0f);
+				ImGui::SliderFloat((title + "Rotation angle:").c_str(), &item->rotationAngle, 0.0f, 360.0f);
 				//缩放
-				ImGui::SliderFloat((title + "Scaling:").c_str(), &item.scaling.x, -0.0f, 20.0f);
-				item.scaling = glm::vec3(item.scaling.x);
+				ImGui::SliderFloat((title + "Scaling:").c_str(), &item->scaling.x, -0.0f, 20.0f);
+				item->scaling = glm::vec3(item->scaling.x);
 
 				indexTempRO++;
 			}
 
 			//灯光相关
 			int indexTempLO = 0;
-			for (RendererObject& item : *worldObjects->getLightObjects()) {
+			for (auto item : world.getLightObjects()) {
 
-				float* pos[3] = { &item.position.x,&item.position.y ,&item.position.z };
+				float* pos[3] = { &item->position.x,&item->position.y ,&item->position.z };
 
 				std::string title = std::format("Light:{0} ", indexTempLO);
 				ImGui::Text(title.c_str());
@@ -87,9 +86,9 @@ namespace OpenGLSamples::Based {
 			}
 
 			//Camera相关
-			{
-				Camera* cameraTemp = worldObjects->getCamera();
-				float* pos[3] = { &cameraTemp->position.x,&cameraTemp->position.y ,&cameraTemp->position.z };
+			int indexTempCO = 0;
+			for (auto item : world.getCamera()) {
+				float* pos[3] = { &item->position.x,&item->position.y ,&item->position.z };
 
 				std::string title = std::format("Camera:{0} ", 0);
 				ImGui::Text(title.c_str());
