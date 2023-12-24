@@ -13,40 +13,40 @@ namespace OpenGLSamples::Based {
 		GL_World() = default;
 		~GL_World() = default;
 
-		void set(RendererObject _object) {
-			objects.push_back(_object);
+		void set(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling) {
+			objects.push_back(std::shared_ptr<RendererObject>(new RendererObject(_meshName, _textureName, _vsName, _fsName, _position, _rotation, _scaling)));
 		}
 
-		void set(LightObject _light) {
-			lights.push_back(_light);
+		void set(glm::vec3 _position, glm::vec3 _rotation, float _illumination) {
+			lights.push_back(std::shared_ptr<LightObject>(new LightObject(_position, _rotation, _illumination)));
 		}
 
-		void set(Camera _camera) {
-			camera = _camera;
+		void set(glm::vec3 _position, glm::vec3 _rotation) {
+			cameras.push_back(std::shared_ptr<Camera>(new Camera(_position, _rotation)));
 		}
 
-		std::vector<RendererObject>* getRenderObjects() {
-			return &objects;
+		auto getRenderObjects() {
+			return objects;
 		}
 
-		std::vector<LightObject>* getLightObjects() {
-			return &lights;
+		auto getLightObjects() {
+			return lights;
 		}
 
-		Camera* getCamera() {
-			return &camera;
+		auto getCamera() {
+			return cameras;
 		}
 
 		void clear() {
 			objects.clear();
 			lights.clear();
+			cameras.clear();
 		}
 
 	private:
-		std::vector<RendererObject> objects;
-		std::vector<LightObject> lights;
-
-		Camera camera;
+		std::vector<std::shared_ptr<RendererObject>> objects;
+		std::vector<std::shared_ptr<LightObject>> lights;
+		std::vector<std::shared_ptr<Camera>> cameras;
 
 	};
 
