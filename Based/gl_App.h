@@ -20,13 +20,10 @@ namespace OpenGLSamples {
 		class GL_App
 		{
 		public:
-			Type::win_info_s info;
-
-		public:
 			GL_App();
 			~GL_App();
 
-			bool init(int _width, int _height, string _title, GL_World& world);
+			bool init(int _width, int _height, string _title);
 
 			void run();
 

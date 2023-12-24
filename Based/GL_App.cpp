@@ -2,28 +2,8 @@
 #include "GL_RenderPipeline.h"
 #include "GL_World.h"
 #include "Type.h"
+#include "Common.h"
 
-
-bool initWin(OpenGLSamples::Type::win_info_s& info) {
-
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	info.handle = glfwCreateWindow(info.width, info.height, info.title.c_str(), nullptr, nullptr);
-	if (info.handle == NULL) {
-		glfwTerminate();
-		return false;
-	}
-
-	glfwMakeContextCurrent((GLFWwindow*)info.handle);
-
-	if (gladLoadGL() != true) { return false; }
-
-	return true;
-}
 
 namespace OpenGLSamples::Based {
 
@@ -37,19 +17,17 @@ namespace OpenGLSamples::Based {
 
 	}
 
-	bool GL_App::init(int _width, int _height, string _title, GL_World& world)
+	bool GL_App::init(int _width, int _height, string _title)
 	{
-		if (_width <= 0 || _height <= 0 || _title.empty()) { return false; }
-		info.width = _width; info.height = _height; info.title = _title;
 		cout << "Window info: " << "\n\twidth = " << _width << "\n\theight = " << _height << "\n";
 
-		if (!initWin(this->info)) {
+		if (!winInfo.init(_width, _height, _title)) {
 			cout << "Init window error!\n";
 			return false;
 		}
 
 		//初始化渲染管线
-		if (!pipeline.init(this->info, world)) {
+		if (!pipeline.init()) {
 			cout << "Init OpenGL error!\n";
 			return false;
 		}
@@ -63,7 +41,7 @@ namespace OpenGLSamples::Based {
 
 	void GL_App::run()
 	{
-		while (!glfwWindowShouldClose((GLFWwindow*)info.handle)) {
+		while (!glfwWindowShouldClose((GLFWwindow*)winInfo.handle)) {
 			glfwPollEvents();
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -72,7 +50,7 @@ namespace OpenGLSamples::Based {
 			//调用渲染管线
 			pipeline.render();
 
-			glfwSwapBuffers((GLFWwindow*)info.handle);
+			glfwSwapBuffers((GLFWwindow*)winInfo.handle);
 		}
 	}
 
@@ -83,7 +61,7 @@ namespace OpenGLSamples::Based {
 		//关闭渲染管线
 		pipeline.close();
 
-		glfwDestroyWindow((GLFWwindow*)info.handle);
+		glfwDestroyWindow((GLFWwindow*)winInfo.handle);
 		glfwTerminate();
 	}
 }

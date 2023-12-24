@@ -5,7 +5,7 @@
 
 namespace OpenGLSamples::Based {
 
-	bool GL_RenderPipeline::init(Type::win_info_s& winInfo, GL_World& world)
+	bool GL_RenderPipeline::init()
 	{
 		//³¡¾°µÄPass
 		auto scenePass = new GL_SceneRenderPass();

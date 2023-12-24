@@ -17,7 +17,7 @@ namespace OpenGLSamples {
 			GL_RenderPipeline() = default;
 			~GL_RenderPipeline() = default;
 
-			bool init(Type::win_info_s& winInfo, GL_World& world);
+			bool init();
 
 			void render();
 

@@ -29,7 +29,7 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)winInfo.handle, true); //会报错，或许是因为GLFW的版本问题？
+		ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)winInfo.handle, true);
 		ImGui_ImplOpenGL3_Init();
 
 		return true;

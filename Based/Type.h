@@ -2,6 +2,8 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include <glm/gtx/hash.hpp>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 using namespace std;
 
@@ -14,6 +16,30 @@ namespace OpenGLSamples {
 			int width, height;
 			string title;
 			void* handle;
+
+			bool init(int _width, int _height, string _title) 
+			{
+				if (_width <= 0 || _height <= 0 || _title.empty()) { return false; }
+				width = _width; height = _height; title = _title;
+
+				glfwInit();
+				glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+				glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+				glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+				glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+				handle = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+				if (handle == NULL) {
+					glfwTerminate();
+					return false;
+				}
+
+				glfwMakeContextCurrent((GLFWwindow*)handle);
+
+				if (gladLoadGL() != true) { return false; }
+
+				return true;
+			}
 		};
 
 		//¶¥µã
