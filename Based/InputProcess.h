@@ -14,7 +14,7 @@ namespace OpenGLSamples {
 			~InputProcess() = default;
 
 			//处理摄像机相关的设备输入
-			static void processCameraInput(GLFWwindow* _window, Camera* _camera) {
+			static void processCameraInput(GLFWwindow* _window, shared_ptr<Camera> _camera) {
 
 				if (glfwGetKey(_window, GLFW_KEY_SPACE) == GLFW_TRUE) {
 					isStopMouseInput = !isStopMouseInput;

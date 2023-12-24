@@ -13,15 +13,14 @@ namespace OpenGLSamples {
 			GL_SceneRenderPass() = default;
 			~GL_SceneRenderPass() = default;
 
-			bool init(Type::win_info_s& winInfo, GL_World& world);
+			bool init();
 
 			void render();
 
 			void close();
 
 		private:
-			GL_World* worldObjects;
-			Type::win_info_s* winInfo;
+
 		};
 
 	}

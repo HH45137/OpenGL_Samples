@@ -1,30 +1,28 @@
 #include "GL_SceneRenderPass.h"
 #include "RendererObject.h"
 #include "gl_App.h"
+#include "Common.h"
 
 using namespace OpenGLSamples::Based;
 
 
 namespace OpenGLSamples::Based {
 
-	bool GL_SceneRenderPass::init(Type::win_info_s& winInfo, GL_World& world)
+	bool GL_SceneRenderPass::init()
 	{
-		this->worldObjects = &world;
-		this->winInfo = &winInfo;
-
 		//初始化普通模型
-		for (RendererObject& item : *worldObjects->getRenderObjects())
+		for (auto item : world.getRenderObjects())
 		{
-			if (!item.init()) {
+			if (!item->init()) {
 				cout << "RenderObject init error!\n";
 				return false;
 			}
 		}
 
 		//初始化灯光模型
-		for (LightObject& item : *worldObjects->getLightObjects())
+		for (auto item : world.getLightObjects())
 		{
-			if (!item.init()) {
+			if (!item->init()) {
 				cout << "LightObject init error!\n";
 				return false;
 			}
@@ -36,13 +34,13 @@ namespace OpenGLSamples::Based {
 	void GL_SceneRenderPass::render()
 	{
 		//渲染普通模型
-		for (RendererObject& item : *worldObjects->getRenderObjects()) {
-			item.render(this->winInfo, this->worldObjects->getCamera());
+		for (auto item : world.getRenderObjects()) {
+			item->render();
 		}
 
 		//渲染灯光模型
-		for (LightObject& item : *worldObjects->getLightObjects()) {
-			item.render(this->winInfo, this->worldObjects->getCamera());
+		for (auto item : world.getLightObjects()) {
+			item->render();
 		}
 	}
 

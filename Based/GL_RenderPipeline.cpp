@@ -9,7 +9,7 @@ namespace OpenGLSamples::Based {
 	{
 		//³¡¾°µÄPass
 		auto scenePass = new GL_SceneRenderPass();
-		if (!scenePass->init(winInfo, world)) {
+		if (!scenePass->init()) {
 			return false;
 		}
 		renderPass.push_back(scenePass);
@@ -20,7 +20,7 @@ namespace OpenGLSamples::Based {
 		//renderPass.push_back(postPass);
 
 		auto imguiPass = new GL_ImguiRenderPass();
-		if (!imguiPass->init(winInfo, world)) {
+		if (!imguiPass->init()) {
 			return false;
 		}
 		renderPass.push_back(imguiPass);

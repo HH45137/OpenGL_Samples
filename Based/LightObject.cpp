@@ -20,14 +20,14 @@ OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _r
 	this->type = Type::OBJECT_TYPE::LIGHT_OBJECT;
 }
 
-int OpenGLSamples::Based::LightObject::render(Type::win_info_s* _winInfo, Camera* _camera)
+int OpenGLSamples::Based::LightObject::render()
 {
 	shader->Use();
 	texture.use();
 
 	glBindVertexArray(mesh.VAO);
 
-	matrixUpdate(_winInfo, _camera);
+	matrixUpdate();
 	shader->inInit();
 
 	glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
@@ -36,7 +36,7 @@ int OpenGLSamples::Based::LightObject::render(Type::win_info_s* _winInfo, Camera
 	return 0;
 }
 
-int OpenGLSamples::Based::LightObject::matrixUpdate(Type::win_info_s* _winInfo, Camera* _camera)
+int OpenGLSamples::Based::LightObject::matrixUpdate()
 {
 	//记住！必须要先初始化矩阵为1，不然要出大问题
 	glm::mat4 viewMat = glm::mat4(1.0f);
@@ -47,8 +47,9 @@ int OpenGLSamples::Based::LightObject::matrixUpdate(Type::win_info_s* _winInfo, 
 	modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), rotation);
 	modelMat = glm::scale(modelMat, scaling);
 
-	Input::InputProcess::processCameraInput((GLFWwindow*)_winInfo->handle, _camera);
-	viewMat = glm::lookAt(_camera->position, _camera->position + _camera->front, _camera->up);
+	auto camreaTemp = world.getCamera()[0];
+	Input::InputProcess::processCameraInput((GLFWwindow*)winInfo.handle, camreaTemp);
+	viewMat = glm::lookAt(camreaTemp->position, camreaTemp->position + camreaTemp->front, camreaTemp->up);
 	projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
 	shader->SetUniformValue(modelMat, "model");
