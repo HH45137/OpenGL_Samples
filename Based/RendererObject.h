@@ -19,7 +19,7 @@ namespace OpenGLSamples::Based {
 		~RendererObject() = default;
 
 		bool init();
-		int render(int index);
+		int render();
 
 		int matrixUpdate();
 		int setGLState();

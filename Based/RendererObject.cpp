@@ -47,7 +47,7 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
-	int RendererObject::render(int index)
+	int RendererObject::render()
 	{
 		shader->Use();
 		texture.use();
@@ -55,7 +55,7 @@ namespace OpenGLSamples::Based {
 		glBindVertexArray(mesh.VAO);
 
 		matrixUpdate();
-		shader->inUpdate(index);
+		shader->inUpdate();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);

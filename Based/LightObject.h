@@ -11,7 +11,7 @@ namespace OpenGLSamples::Based {
 		LightObject() = default;
 		~LightObject() = default;
 
-		int render(int index);
+		int render();
 
 		int matrixUpdate();
 		int setGLState();
