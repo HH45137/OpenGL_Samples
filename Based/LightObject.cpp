@@ -101,7 +101,6 @@ int OpenGLSamples::Based::LightObject::setGLState()
 	texture.use();
 	shader->Use();
 	shader->SetUniformValue(texture.handle, "texture01");
-	shader->inUpdate();
 
 	return 0;
 }
