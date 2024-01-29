@@ -22,8 +22,11 @@ namespace OpenGLSamples::Based {
 	int Shader_Phong::inUpdate(int index)
 	{
 		auto tL = world.getLightObject(index);
+		auto tC = world.getCamera()[0];
+
 		SetUniformValue(tL->color, "lightColor");
 		SetUniformValue(tL->position, "lightPos");
+		SetUniformValue(tC->position, "viewPos");
 
 		return 0;
 	}
