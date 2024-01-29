@@ -19,7 +19,7 @@ void main()
 {
 	oColor = color;
 	UV = aUV;
-	oNormal = aNormal;
+	oNormal = mat3(transpose(inverse(model))) * aNormal;
 	gl_Position = projection * view * model * vec4(aPos, 1.0);
 	oFragPos = vec3(model * vec4(aPos, 1.0f));
 }
