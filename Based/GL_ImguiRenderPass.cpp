@@ -76,11 +76,14 @@ namespace OpenGLSamples::Based {
 			for (auto item : world.getLightObjects()) {
 
 				float* pos[3] = { &item->position.x,&item->position.y ,&item->position.z };
+				float* color[3] = { &item->color.r,&item->color.g ,&item->color.b };
 
 				std::string title = std::format("Light:{0} ", indexTempLO);
 				ImGui::Text(title.c_str());
 				//Î»ÖÃ
 				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+				//ÑÕÉ«
+				ImGui::SliderFloat3((title + "Color:").c_str(), *color, 0.0f, 1.0f);
 
 				indexTempLO++;
 			}

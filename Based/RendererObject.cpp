@@ -55,7 +55,7 @@ namespace OpenGLSamples::Based {
 		glBindVertexArray(mesh.VAO);
 
 		matrixUpdate();
-		shader->inInit();
+		shader->inUpdate();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);

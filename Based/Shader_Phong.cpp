@@ -1,4 +1,5 @@
 #include "Shader_Phong.h"
+#include "Common.h"
 
 
 namespace OpenGLSamples::Based {
@@ -20,7 +21,8 @@ namespace OpenGLSamples::Based {
 
 	int Shader_Phong::inUpdate()
 	{
-		SetUniformValue(glm::vec3(1.0f, 0.5f, 0.2f), "lightColor");
+		auto tL = world.getLightObject(0);
+		SetUniformValue(tL->color, "lightColor");
 
 		return 0;
 	}

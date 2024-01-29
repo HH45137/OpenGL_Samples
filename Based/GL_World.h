@@ -28,9 +28,15 @@ namespace OpenGLSamples::Based {
 		auto getRenderObjects() {
 			return objects;
 		}
+		auto getRenderObject(int index) {
+			return objects[index];
+		}
 
 		auto getLightObjects() {
 			return lights;
+		}
+		auto getLightObject(int index) {
+			return lights[index];
 		}
 
 		auto getCamera() {
