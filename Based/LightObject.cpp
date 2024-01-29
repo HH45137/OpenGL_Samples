@@ -20,7 +20,7 @@ OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _r
 	this->type = Type::OBJECT_TYPE::LIGHT_OBJECT;
 }
 
-int OpenGLSamples::Based::LightObject::render()
+int OpenGLSamples::Based::LightObject::render(int index)
 {
 	shader->Use();
 	texture.use();
@@ -28,7 +28,7 @@ int OpenGLSamples::Based::LightObject::render()
 	glBindVertexArray(mesh.VAO);
 
 	matrixUpdate();
-	shader->inUpdate();
+	shader->inUpdate(index);
 
 	glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 	glBindVertexArray(0);

@@ -66,7 +66,7 @@ namespace OpenGLSamples::Based {
 		void Close();
 
 		virtual int inInit();
-		virtual int inUpdate();
+		virtual int inUpdate(int index);
 
 	private:
 

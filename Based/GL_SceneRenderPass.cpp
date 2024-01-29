@@ -34,13 +34,17 @@ namespace OpenGLSamples::Based {
 	void GL_SceneRenderPass::render()
 	{
 		//渲染普通模型
+		int roIndex = 0;
 		for (auto item : world.getRenderObjects()) {
-			item->render();
+			item->render(roIndex);
+			roIndex++;
 		}
 
 		//渲染灯光模型
+		int loIndex = 0;
 		for (auto item : world.getLightObjects()) {
-			item->render();
+			item->render(loIndex);
+			loIndex++;
 		}
 	}
 

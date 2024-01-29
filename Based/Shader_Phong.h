@@ -11,7 +11,7 @@ namespace OpenGLSamples::Based {
 		~Shader_Phong();
 
 		int inInit();
-		int inUpdate();
+		int inUpdate(int index);
 
 	private:
 

@@ -19,9 +19,9 @@ namespace OpenGLSamples::Based {
 		return 0;
 	}
 
-	int Shader_Phong::inUpdate()
+	int Shader_Phong::inUpdate(int index)
 	{
-		auto tL = world.getLightObject(0);
+		auto tL = world.getLightObject(index);
 		SetUniformValue(tL->color, "lightColor");
 
 		return 0;

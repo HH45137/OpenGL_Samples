@@ -164,7 +164,7 @@ namespace OpenGLSamples::Based {
 		return 0;
 	}
 
-	int Shader::inUpdate()
+	int Shader::inUpdate(int index)
 	{
 		return 0;
 	}

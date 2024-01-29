@@ -29,6 +29,9 @@ namespace OpenGLSamples::Based {
 			return objects;
 		}
 		auto getRenderObject(int index) {
+			if (objects.size() >= index) {
+				return objects[objects.size() - 1];
+			}
 			return objects[index];
 		}
 
@@ -36,6 +39,9 @@ namespace OpenGLSamples::Based {
 			return lights;
 		}
 		auto getLightObject(int index) {
+			if (lights.size() >= index) {
+				return lights[lights.size() - 1];
+			}
 			return lights[index];
 		}
 
