@@ -23,6 +23,7 @@ namespace OpenGLSamples::Based {
 	{
 		auto tL = world.getLightObject(index);
 		SetUniformValue(tL->color, "lightColor");
+		SetUniformValue(tL->position, "lightPos");
 
 		return 0;
 	}

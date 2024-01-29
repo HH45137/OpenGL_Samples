@@ -13,6 +13,7 @@ uniform vec4 color;
 out vec4 oColor;
 out vec2 UV;
 out vec3 oNormal;
+out vec3 oFragPos;
 
 void main()
 {
@@ -20,4 +21,5 @@ void main()
 	UV = aUV;
 	oNormal = aNormal;
 	gl_Position = projection * view * model * vec4(aPos, 1.0);
+	oFragPos = vec3(model * vec4(aPos, 1.0f));
 }
