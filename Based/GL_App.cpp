@@ -7,6 +7,9 @@
 
 namespace OpenGLSamples::Based {
 
+	Type::win_info_s winInfo = {};
+	GL_World world;
+
 	GL_App::GL_App()
 	{
 

@@ -11,7 +11,7 @@ namespace OpenGLSamples {
 		const static std::string MESHS_BASE_DIR = ASSETS_BASE_DIR + "meshs\\";
 		const static std::string TEXTURE_BASE_DIR = ASSETS_BASE_DIR + "textures\\";
 
-		static GL_World world;
-		static Type::win_info_s winInfo;
+		extern GL_World world;
+		extern Type::win_info_s winInfo;
 	}
 }
