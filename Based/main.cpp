@@ -10,14 +10,14 @@ using namespace OpenGLSamples::Based;
 
 int main()
 {
-	world.set(
-		"PC_Mesh.obj",
-		"PC_Texture.png",
-		"phong_vs.glsl", "phong_fs.glsl",
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f),
-		glm::vec3(1.0f)
-	);
+	//world.set(
+	//	"PC_Mesh.obj",
+	//	"PC_Texture.png",
+	//	"phong_vs.glsl", "phong_fs.glsl",
+	//	glm::vec3(0.0f, 0.0f, 0.0f),
+	//	glm::vec3(0.0f, 1.0f, 0.0f),
+	//	glm::vec3(1.0f)
+	//);
 	world.set(
 		"CornellBox.obj",
 		"CornellBox_Color.png",
@@ -26,14 +26,14 @@ int main()
 		glm::vec3(0.0f, 1.0f, 0.0f),
 		glm::vec3(1.0f)
 	);
-	world.set(
-		"Price.obj",
-		"price_texture_1k.png",
-		"phong_vs.glsl", "phong_fs.glsl",
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f),
-		glm::vec3(5.0f)
-	);
+	//world.set(
+	//	"Price.obj",
+	//	"price_texture_1k.png",
+	//	"phong_vs.glsl", "phong_fs.glsl",
+	//	glm::vec3(0.0f, 0.0f, 0.0f),
+	//	glm::vec3(0.0f, 1.0f, 0.0f),
+	//	glm::vec3(5.0f)
+	//);
 	world.set(
 		glm::vec3(0.0f, 2.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f),
@@ -47,7 +47,7 @@ int main()
 	GL_App app;
 
 	try {
-		app.init(WIN_WIDTH, WIN_HEIGHT, "OpenGL base app");
+		app.init(WIN_WIDTH, WIN_HEIGHT, "OpenGL GLSL Ray-Tracing App");
 		app.run();
 		app.close();
 	}
