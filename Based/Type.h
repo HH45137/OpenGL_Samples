@@ -17,7 +17,7 @@ namespace OpenGLSamples {
 			string title;
 			void* handle;
 
-			bool init(int _width, int _height, string _title) 
+			bool init(int _width, int _height, string _title)
 			{
 				if (_width <= 0 || _height <= 0 || _title.empty()) { return false; }
 				width = _width; height = _height; title = _title;
@@ -58,6 +58,7 @@ namespace OpenGLSamples {
 			RENDER_OBJECT = 1,
 			CAMERA,
 			LIGHT_OBJECT,
+			RAYTRACING_OBJECT,
 			OBJECT_TYPE_COUNT
 		};
 	}

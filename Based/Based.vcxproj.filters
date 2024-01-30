@@ -84,6 +84,12 @@
     <ClCompile Include="Shader_Phong.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shader_PT.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RayTracingObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -180,6 +186,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shader_Phong.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader_PT.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracingObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

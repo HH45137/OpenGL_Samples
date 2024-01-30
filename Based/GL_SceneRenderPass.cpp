@@ -28,6 +28,15 @@ namespace OpenGLSamples::Based {
 			}
 		}
 
+		//初始化RT模型
+		for (auto item : world.getRayTracingObjects())
+		{
+			if (!item->init()) {
+				cout << "RayTracingObject init error!\n";
+				return false;
+			}
+		}
+
 		return true;
 	}
 
@@ -40,6 +49,11 @@ namespace OpenGLSamples::Based {
 
 		//渲染灯光模型
 		for (auto item : world.getLightObjects()) {
+			item->render();
+		}
+
+		//渲染RT模型
+		for (auto item : world.getRayTracingObjects()) {
 			item->render();
 		}
 	}

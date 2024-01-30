@@ -88,6 +88,22 @@ namespace OpenGLSamples::Based {
 				indexTempLO++;
 			}
 
+			//RayTracing相关
+			int indexTempRTO = 0;
+			for (auto item : world.getRayTracingObjects()) {
+
+				float* pos[3] = { &item->position.x,&item->position.y ,&item->position.z };
+
+				std::string title = std::format("Ray-Tracing:{0} ", indexTempRTO);
+				ImGui::Text(title.c_str());
+				//位置
+				ImGui::SliderFloat3((title + "Position:").c_str(), *pos, -100.0f, 100.0f);
+				//颜色
+				ImGui::SliderFloat((title + "Radius:").c_str(), &item->radius, 0.0f, 5.0f);
+
+				indexTempRTO++;
+			}
+
 			//Camera相关
 			int indexTempCO = 0;
 			for (auto item : world.getCamera()) {

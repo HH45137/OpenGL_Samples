@@ -1,27 +1,27 @@
-#include "LightObject.h"
+#include "RayTracingObject.h"
 #include "Common.h"
 #include "InputProcess.h"
 #include "gl_App.h"
+#include "Shader_PT.h"
 
 
-OpenGLSamples::Based::LightObject::LightObject(glm::vec3 _position, glm::vec3 _rotation, float _illumination)
+OpenGLSamples::Based::RayTracingObject::RayTracingObject(glm::vec3 _position, float _radius)
 {
 	this->meshPath = MESHS_BASE_DIR + "light_model.obj";
 	this->texturePath = TEXTURE_BASE_DIR + "light_color.png";
-	this->vsPath = SHADER_BASE_DIR + "light_vs.glsl";
-	this->fsPath = SHADER_BASE_DIR + "light_fs.glsl";
+	this->vsPath = SHADER_BASE_DIR + "pathtracing_vs.glsl";
+	this->fsPath = SHADER_BASE_DIR + "pathtracing_fs.glsl";
 
 	this->position = _position;
-	this->rotation = _rotation;
+	this->rotation = glm::vec3(1.0);
 	this->scaling = glm::vec3(1.0);
 
-	this->illumination = _illumination;
-	this->color = glm::vec3(0.5f);
+	this->radius = _radius;
 
-	this->type = Type::OBJECT_TYPE::LIGHT_OBJECT;
+	this->type = Type::OBJECT_TYPE::RAYTRACING_OBJECT;
 }
 
-int OpenGLSamples::Based::LightObject::render()
+int OpenGLSamples::Based::RayTracingObject::render()
 {
 	shader->Use();
 	texture.use();
@@ -37,7 +37,7 @@ int OpenGLSamples::Based::LightObject::render()
 	return 0;
 }
 
-int OpenGLSamples::Based::LightObject::matrixUpdate()
+int OpenGLSamples::Based::RayTracingObject::matrixUpdate()
 {
 	//记住！必须要先初始化矩阵为1，不然要出大问题
 	glm::mat4 viewMat = glm::mat4(1.0f);
@@ -60,7 +60,7 @@ int OpenGLSamples::Based::LightObject::matrixUpdate()
 	return 0;
 }
 
-int OpenGLSamples::Based::LightObject::setGLState()
+int OpenGLSamples::Based::RayTracingObject::setGLState()
 {
 	//-----设置各种顶点Buffer-----
 	glGenVertexArrays(1, &mesh.VAO);
@@ -106,9 +106,9 @@ int OpenGLSamples::Based::LightObject::setGLState()
 	return 0;
 }
 
-int OpenGLSamples::Based::LightObject::choiceShaderType()
+int OpenGLSamples::Based::RayTracingObject::choiceShaderType()
 {
-	shader = new Shader();
+	shader = new Shader_PT();
 
 	return 0;
 }

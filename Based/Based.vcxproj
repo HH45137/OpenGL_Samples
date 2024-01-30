@@ -153,9 +153,11 @@
     <ClCompile Include="Imgui\imgui_widgets.cpp" />
     <ClCompile Include="LightObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RayTracingObject.cpp" />
     <ClCompile Include="RendererObject.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shader_Phong.cpp" />
+    <ClCompile Include="Shader_PT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\assets\shaders\light_fs.glsl">
@@ -196,6 +198,7 @@
     <ClInclude Include="Imgui\imstb_truetype.h" />
     <ClInclude Include="InputProcess.h" />
     <ClInclude Include="LightObject.h" />
+    <ClInclude Include="RayTracingObject.h" />
     <ClInclude Include="RendererObject.h" />
     <ClInclude Include="GL_Mesh.h" />
     <ClInclude Include="GL_RenderPipeline.h" />
@@ -203,6 +206,7 @@
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shader_Phong.h" />
+    <ClInclude Include="Shader_PT.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

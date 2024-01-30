@@ -39,8 +39,11 @@ int main()
 		glm::vec3(0.0f, 1.0f, 0.0f),
 		0.8f
 	);
+
+	world.set(glm::vec3(0.0f), 1.2f);	// Sphere use for Ray-Tracing
+
 	world.set(
-		glm::vec3(75.0f, 46.0f, -5.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
 

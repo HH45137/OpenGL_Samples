@@ -3,6 +3,7 @@
 #include "RendererObject.h"
 #include "Camera.h"
 #include "LightObject.h"
+#include "RayTracingObject.h"
 
 
 namespace OpenGLSamples::Based {
@@ -21,12 +22,20 @@ namespace OpenGLSamples::Based {
 			lights.push_back(std::shared_ptr<LightObject>(new LightObject(_position, _rotation, _illumination)));
 		}
 
+		void set(glm::vec3 _position, float _radius) {
+			rt_objects.push_back(std::shared_ptr<RayTracingObject>(new RayTracingObject(_position, _radius)));
+		}
+
 		void set(glm::vec3 _position, glm::vec3 _rotation) {
 			cameras.push_back(std::shared_ptr<Camera>(new Camera(_position, _rotation)));
 		}
 
 		auto getRenderObjects() {
 			return objects;
+		}
+
+		auto getRayTracingObjects() {
+			return rt_objects;
 		}
 
 		auto getLightObjects() {
@@ -38,12 +47,14 @@ namespace OpenGLSamples::Based {
 		}
 
 		void clear() {
+			rt_objects.clear();
 			objects.clear();
 			lights.clear();
 			cameras.clear();
 		}
 
 	private:
+		std::vector<std::shared_ptr<RayTracingObject>> rt_objects;
 		std::vector<std::shared_ptr<RendererObject>> objects;
 		std::vector<std::shared_ptr<LightObject>> lights;
 		std::vector<std::shared_ptr<Camera>> cameras;
