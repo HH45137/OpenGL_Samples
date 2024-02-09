@@ -2,10 +2,37 @@
 #include "Type.h"
 #include "Common.h"
 
+#include "Shader.h"
+
 
 namespace OpenGLSamples::Based {
 
 	Type::win_info_s winInfo = {};
+
+
+	//Render fullscreen plane
+	Shader planeShader;
+
+	void initRender()
+	{
+		planeShader.init(
+			SHADER_BASE_DIR + "pt.vert",
+			SHADER_BASE_DIR + "pt.frag"
+		);
+	}
+
+	void loopRender()
+	{
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		planeShader.Use();
+
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		glfwSwapBuffers((GLFWwindow*)winInfo.handle);
+	}
 
 	bool GL_App::init(int _width, int _height, string _title)
 	{
@@ -15,6 +42,8 @@ namespace OpenGLSamples::Based {
 			cout << "Init window error!\n";
 			return false;
 		}
+
+		initRender();
 
 		/*-------------------设置深度缓冲和视口-------------------*/
 		glViewport(0, 0, WIN_WIDTH, WIN_HEIGHT);
@@ -28,10 +57,7 @@ namespace OpenGLSamples::Based {
 		while (!glfwWindowShouldClose((GLFWwindow*)winInfo.handle)) {
 			glfwPollEvents();
 
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			glfwSwapBuffers((GLFWwindow*)winInfo.handle);
+			loopRender();
 		}
 	}
 
