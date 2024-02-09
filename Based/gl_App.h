@@ -8,7 +8,6 @@
 #include <GLFW/glfw3.h>
 
 #include "Type.h"
-#include "GL_RenderPipeline.h"
 
 
 namespace OpenGLSamples {
@@ -30,7 +29,6 @@ namespace OpenGLSamples {
 			void close();
 
 		private:
-			GL_RenderPipeline pipeline;
 
 		};
 	}

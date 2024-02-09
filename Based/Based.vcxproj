@@ -139,11 +139,6 @@
     <ClCompile Include="..\thirdparty\glad.c" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GL_App.cpp" />
-    <ClCompile Include="GL_ImguiRenderPass.cpp" />
-    <ClCompile Include="GL_Mesh.cpp" />
-    <ClCompile Include="GL_RenderPipeline.cpp" />
-    <ClCompile Include="GL_SceneRenderPass.cpp" />
-    <ClCompile Include="GL_Texture.cpp" />
     <ClCompile Include="Imgui\imgui.cpp" />
     <ClCompile Include="Imgui\imgui_demo.cpp" />
     <ClCompile Include="Imgui\imgui_draw.cpp" />
@@ -151,13 +146,8 @@
     <ClCompile Include="Imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Imgui\imgui_tables.cpp" />
     <ClCompile Include="Imgui\imgui_widgets.cpp" />
-    <ClCompile Include="LightObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RayTracingObject.cpp" />
-    <ClCompile Include="RendererObject.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Shader_Phong.cpp" />
-    <ClCompile Include="Shader_PT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\assets\shaders\light_fs.glsl">
@@ -184,9 +174,6 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="GL_App.h" />
-    <ClInclude Include="GL_ImguiRenderPass.h" />
-    <ClInclude Include="GL_Texture.h" />
-    <ClInclude Include="GL_World.h" />
     <ClInclude Include="Imgui\imconfig.h" />
     <ClInclude Include="Imgui\imgui.h" />
     <ClInclude Include="Imgui\imgui_impl_glfw.h" />
@@ -197,16 +184,7 @@
     <ClInclude Include="Imgui\imstb_textedit.h" />
     <ClInclude Include="Imgui\imstb_truetype.h" />
     <ClInclude Include="InputProcess.h" />
-    <ClInclude Include="LightObject.h" />
-    <ClInclude Include="RayTracingObject.h" />
-    <ClInclude Include="RendererObject.h" />
-    <ClInclude Include="GL_Mesh.h" />
-    <ClInclude Include="GL_RenderPipeline.h" />
-    <ClInclude Include="GL_SceneRenderPass.h" />
-    <ClInclude Include="RenderPass.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="Shader_Phong.h" />
-    <ClInclude Include="Shader_PT.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

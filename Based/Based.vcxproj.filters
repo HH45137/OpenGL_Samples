@@ -33,25 +33,7 @@
     <ClCompile Include="..\thirdparty\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GL_SceneRenderPass.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GL_RenderPipeline.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GL_Mesh.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RendererObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GL_Texture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GL_ImguiRenderPass.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Imgui\imgui_impl_glfw.cpp">
@@ -76,18 +58,6 @@
       <Filter>Imgui</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="LightObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader_Phong.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader_PT.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RayTracingObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,28 +86,7 @@
     <ClInclude Include="Type.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RenderPass.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GL_SceneRenderPass.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GL_RenderPipeline.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GL_Mesh.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RendererObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GL_Texture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GL_ImguiRenderPass.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GL_App.h">
@@ -170,28 +119,13 @@
     <ClInclude Include="Imgui\imstb_truetype.h">
       <Filter>Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="GL_World.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="LightObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="InputProcess.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader_Phong.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader_PT.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RayTracingObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
