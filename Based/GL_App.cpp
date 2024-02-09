@@ -7,16 +7,6 @@ namespace OpenGLSamples::Based {
 
 	Type::win_info_s winInfo = {};
 
-	GL_App::GL_App()
-	{
-
-	}
-
-	GL_App::~GL_App()
-	{
-
-	}
-
 	bool GL_App::init(int _width, int _height, string _title)
 	{
 		cout << "Window info: " << "\n\twidth = " << _width << "\n\theight = " << _height << "\n";

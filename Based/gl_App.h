@@ -19,8 +19,8 @@ namespace OpenGLSamples {
 		class GL_App
 		{
 		public:
-			GL_App();
-			~GL_App();
+			GL_App() = default;
+			~GL_App() = default;
 
 			bool init(int _width, int _height, string _title);
 
