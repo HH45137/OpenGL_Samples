@@ -65,11 +65,6 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::matrixUpdate()
 	{
-		//记住！必须要先初始化矩阵为1，不然要出大问题
-		glm::mat4 viewMat = glm::mat4(1.0f);
-		glm::mat4 projectionMat = glm::mat4(1.0f);
-		glm::mat4 modelMat = glm::mat4(1.0f);
-
 		modelMat = glm::translate(modelMat, position);
 		modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), rotation);
 		modelMat = glm::scale(modelMat, scaling);
@@ -119,15 +114,6 @@ namespace OpenGLSamples::Based {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glBindVertexArray(0);
-
-		if (!texture.init()) {
-			return false;
-		}
-
-		//设置贴图
-		texture.use();
-		shader->Use();
-		shader->SetUniformValue(texture.handle, "texture01");
 
 		return 0;
 	}
