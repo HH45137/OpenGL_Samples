@@ -54,6 +54,10 @@ namespace OpenGLSamples::Based {
 
 		glBindVertexArray(mesh.VAO);
 
+		this->viewMat = glm::mat4(1.0f);
+		this->projectionMat = glm::mat4(1.0f);
+		this->modelMat = glm::mat4(1.0f);
+
 		matrixUpdate();
 		shader->inUpdate();
 
