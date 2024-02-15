@@ -152,6 +152,7 @@
     <ClCompile Include="Imgui\imgui_widgets.cpp" />
     <ClCompile Include="LightObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="RendererObject.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shader_Phong.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Imgui\imstb_truetype.h" />
     <ClInclude Include="InputProcess.h" />
     <ClInclude Include="LightObject.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="RendererObject.h" />
     <ClInclude Include="GL_Mesh.h" />
     <ClInclude Include="GL_RenderPipeline.h" />
