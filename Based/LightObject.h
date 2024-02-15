@@ -18,7 +18,7 @@ namespace OpenGLSamples::Based {
 
 	public:
 		float illumination;	//π‚’’«ø∂»
-		glm::vec3 color;
+		glm::vec3 color = glm::vec3(0.5f);
 
 	private:
 		int choiceShaderType();
