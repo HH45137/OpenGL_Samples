@@ -16,16 +16,17 @@ namespace OpenGLSamples::Based {
 
 		int init();
 
-		int use();
+		int update();
 
 		int clean();
+
+	public:
+		GL_Texture texture;
+		Shader* shader;
 
 	private:
 		std::string texturePath;
 		std::string vsPath, fsPath;
-
-		GL_Texture texture;
-		Shader* shader;
 
 	private:
 		int choiceShaderType();

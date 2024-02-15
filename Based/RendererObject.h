@@ -6,6 +6,7 @@
 #include "Type.h"
 #include "Camera.h"
 #include "Shader_Phong.h"
+#include "Material.h"
 
 
 namespace OpenGLSamples::Based {
@@ -13,7 +14,7 @@ namespace OpenGLSamples::Based {
 	class RendererObject
 	{
 	public:
-		RendererObject(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling);
+		RendererObject(std::string _meshName, Material _material, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling);
 
 		RendererObject() = default;
 		~RendererObject() = default;
@@ -28,12 +29,9 @@ namespace OpenGLSamples::Based {
 		Type::OBJECT_TYPE type = Type::OBJECT_TYPE::RENDER_OBJECT;
 
 		std::string meshPath;
-		std::string texturePath;
-		std::string vsPath, fsPath;
-
 		GL_Mesh mesh;
-		GL_Texture texture;
-		Shader* shader;
+
+		Material material;
 
 		float rotationAngle = 0;							//Ðý×ª½Ç¶È
 		glm::vec3 position = glm::vec3(0.0f);				//Î»ÖÃ	

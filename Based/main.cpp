@@ -2,6 +2,7 @@
 
 #include "GL_App.h"
 #include "Common.h"
+#include "Material.h"
 
 using namespace std;
 using namespace OpenGLSamples;
@@ -10,6 +11,8 @@ using namespace OpenGLSamples::Based;
 
 int main()
 {
+	Material cb_Material = { "CornellBox_Color.png" ,"phong_vs.glsl", "phong_fs.glsl" };
+
 	//world.set(
 	//	"PC_Mesh.obj",
 	//	"PC_Texture.png",
@@ -20,16 +23,14 @@ int main()
 	//);
 	world.set(
 		"CornellBox.obj",
-		"CornellBox_Color.png",
-		"phong_vs.glsl", "phong_fs.glsl",
+		cb_Material,
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f),
 		glm::vec3(1.0f)
 	);
 	world.set(
 		"Price.obj",
-		"price_texture_1k.png",
-		"phong_vs.glsl", "phong_fs.glsl",
+		cb_Material,
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f),
 		glm::vec3(5.0f)

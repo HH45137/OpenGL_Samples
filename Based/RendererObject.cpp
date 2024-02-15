@@ -9,12 +9,11 @@ using namespace OpenGLSamples::Based;
 
 namespace OpenGLSamples::Based {
 
-	RendererObject::RendererObject(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling)
+	RendererObject::RendererObject(std::string _meshName, Material _material, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling)
 	{
 		this->meshPath = MESHS_BASE_DIR + _meshName;
-		this->texturePath = TEXTURE_BASE_DIR + _textureName;
-		this->vsPath = SHADER_BASE_DIR + _vsName;
-		this->fsPath = SHADER_BASE_DIR + _fsName;
+
+		this->material = _material;
 
 		this->position = _position;
 		this->rotation = _rotation;
@@ -29,18 +28,8 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		texture.filePath = texturePath;
-		if (!texture.init()) {
-			cout << "Texture init error!\n";
-			return false;
-		}
-
 		choiceShaderType();
-		shader->init(vsPath, fsPath);
-		if (shader->id == -1) {
-			cout << "Shader init error!\n";
-			return false;
-		}
+		material.init();
 
 		setGLState();
 
@@ -49,13 +38,11 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::render()
 	{
-		shader->Use();
-		texture.use();
-
 		glBindVertexArray(mesh.VAO);
 
 		matrixUpdate();
-		shader->inUpdate();
+
+		material.update();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
 		glBindVertexArray(0);
@@ -78,9 +65,9 @@ namespace OpenGLSamples::Based {
 		viewMat = glm::lookAt(camreaTemp->position, camreaTemp->position + camreaTemp->front, camreaTemp->up);
 		projectionMat = glm::perspective((float)FOV, WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
-		shader->SetUniformValue(modelMat, "model");
-		shader->SetUniformValue(viewMat, "view");
-		shader->SetUniformValue(projectionMat, "projection");
+		material.shader->SetUniformValue(modelMat, "model");
+		material.shader->SetUniformValue(viewMat, "view");
+		material.shader->SetUniformValue(projectionMat, "projection");
 
 		return 0;
 	}
@@ -124,7 +111,7 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::choiceShaderType()
 	{
-		shader = new Shader_Phong();
+		material.shader = new Shader_Phong();
 
 		return 0;
 	}

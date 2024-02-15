@@ -13,8 +13,8 @@ namespace OpenGLSamples::Based {
 		GL_World() = default;
 		~GL_World() = default;
 
-		void set(std::string _meshName, std::string _textureName, std::string _vsName, std::string _fsName, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling) {
-			objects.push_back(std::shared_ptr<RendererObject>(new RendererObject(_meshName, _textureName, _vsName, _fsName, _position, _rotation, _scaling)));
+		void set(std::string _meshName, Material _material, glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scaling) {
+			objects.push_back(std::shared_ptr<RendererObject>(new RendererObject(_meshName, _material, _position, _rotation, _scaling)));
 		}
 
 		void set(glm::vec3 _position, glm::vec3 _rotation, float _illumination) {

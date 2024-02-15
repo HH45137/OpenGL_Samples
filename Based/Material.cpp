@@ -30,7 +30,7 @@ namespace OpenGLSamples::Based {
 		return true;
 	}
 
-	int Material::use()
+	int Material::update()
 	{
 		shader->Use();
 		texture.use();
