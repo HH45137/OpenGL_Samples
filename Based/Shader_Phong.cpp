@@ -28,6 +28,11 @@ namespace OpenGLSamples::Based {
 		SetUniformValue(tL->position, "lightPos");
 		SetUniformValue(tC->position, "viewPos");
 
+		SetUniformValue(glm::vec3(1.0f, 1.0f, 1.0f), "material.ambient");
+		SetUniformValue(glm::vec3(1.0f, 1.0f, 1.0f), "material.diffuse");
+		SetUniformValue(glm::vec3(1.0f, 1.0f, 1.0f), "material.specular");
+		SetUniformValue(1.0f, "material.shininess");
+
 		return 0;
 	}
 
