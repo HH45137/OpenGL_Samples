@@ -29,6 +29,6 @@ namespace OpenGLSamples::Based {
 		std::string vsPath, fsPath;
 
 	private:
-		int choiceShaderType();
+
 	};
 }

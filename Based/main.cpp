@@ -12,15 +12,8 @@ using namespace OpenGLSamples::Based;
 int main()
 {
 	Material cb_Material = { "CornellBox_Color.png" ,"phong_vs.glsl", "phong_fs.glsl" };
+	Material pr_Material = { "price_texture_1k.png" ,"phong_vs.glsl", "phong_fs.glsl" };
 
-	//world.set(
-	//	"PC_Mesh.obj",
-	//	"PC_Texture.png",
-	//	"phong_vs.glsl", "phong_fs.glsl",
-	//	glm::vec3(0.0f, 0.0f, 0.0f),
-	//	glm::vec3(0.0f, 1.0f, 0.0f),
-	//	glm::vec3(1.0f)
-	//);
 	world.set(
 		"CornellBox.obj",
 		cb_Material,
@@ -30,7 +23,7 @@ int main()
 	);
 	world.set(
 		"Price.obj",
-		cb_Material,
+		pr_Material,
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f),
 		glm::vec3(5.0f)

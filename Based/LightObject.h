@@ -22,5 +22,10 @@ namespace OpenGLSamples::Based {
 
 	private:
 		int choiceShaderType();
+
+		//记住！必须要先初始化矩阵为1，不然要出大问题
+		glm::mat4 viewMat = glm::mat4(1.0f);
+		glm::mat4 projectionMat = glm::mat4(1.0f);
+		glm::mat4 modelMat = glm::mat4(1.0f);
 	};
 }

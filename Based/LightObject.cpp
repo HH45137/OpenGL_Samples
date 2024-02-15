@@ -9,7 +9,7 @@ namespace OpenGLSamples::Based {
 	{
 		this->meshPath = MESHS_BASE_DIR + "light_model.obj";
 
-		this->material = Material(TEXTURE_BASE_DIR + "light_color.png", SHADER_BASE_DIR + "light_vs.glsl", SHADER_BASE_DIR + "light_fs.glsl");
+		this->material = Material("light_color.png", "light_vs.glsl", "light_fs.glsl");
 
 		this->position = _position;
 		this->rotation = _rotation;
@@ -26,6 +26,7 @@ namespace OpenGLSamples::Based {
 
 		matrixUpdate();
 
+		choiceShaderType();
 		material.update();
 
 		glDrawElements(GL_TRIANGLES, mesh.vertexCount, GL_UNSIGNED_INT, (GLvoid*)0);
@@ -36,10 +37,9 @@ namespace OpenGLSamples::Based {
 
 	int LightObject::matrixUpdate()
 	{
-		//记住！必须要先初始化矩阵为1，不然要出大问题
-		glm::mat4 viewMat = glm::mat4(1.0f);
-		glm::mat4 projectionMat = glm::mat4(1.0f);
-		glm::mat4 modelMat = glm::mat4(1.0f);
+		viewMat = glm::mat4(1.0f);
+		projectionMat = glm::mat4(1.0f);
+		modelMat = glm::mat4(1.0f);
 
 		modelMat = glm::translate(modelMat, position);
 		modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), rotation);

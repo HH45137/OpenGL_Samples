@@ -20,7 +20,6 @@ namespace OpenGLSamples::Based {
 			return false;
 		}
 
-		choiceShaderType();
 		shader->init(vsPath, fsPath);
 		if (shader->id == -1) {
 			cout << "Shader init error!\n";
@@ -44,13 +43,6 @@ namespace OpenGLSamples::Based {
 	{
 		texture.close();
 		shader->Close();
-
-		return 1;
-	}
-
-	int Material::choiceShaderType()
-	{
-		shader = new Shader_Phong();
 
 		return 1;
 	}
