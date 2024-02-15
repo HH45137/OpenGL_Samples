@@ -54,10 +54,6 @@ namespace OpenGLSamples::Based {
 
 		glBindVertexArray(mesh.VAO);
 
-		this->viewMat = glm::mat4(1.0f);
-		this->projectionMat = glm::mat4(1.0f);
-		this->modelMat = glm::mat4(1.0f);
-
 		matrixUpdate();
 		shader->inUpdate();
 
@@ -69,6 +65,10 @@ namespace OpenGLSamples::Based {
 
 	int RendererObject::matrixUpdate()
 	{
+		viewMat = glm::mat4(1.0f);
+		projectionMat = glm::mat4(1.0f);
+		modelMat = glm::mat4(1.0f);
+
 		modelMat = glm::translate(modelMat, position);
 		modelMat = glm::rotate(modelMat, glm::radians(rotationAngle), rotation);
 		modelMat = glm::scale(modelMat, scaling);
