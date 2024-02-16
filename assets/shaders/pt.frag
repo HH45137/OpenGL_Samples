@@ -4,5 +4,7 @@ out vec4 FragColor;
 
 void main()
 {
-	FragColor=vec4(1.f);
+	vec3 pixelColor = vec3(normalize(gl_FragCoord.xy), 0.f);
+	
+	FragColor = vec4(pixelColor, 1.f);
 }
