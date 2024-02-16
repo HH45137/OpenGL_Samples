@@ -12,6 +12,7 @@ namespace OpenGLSamples::Based {
 
 	//Render fullscreen plane
 	Shader planeShader;
+	GLuint VAO;
 
 	void initRender()
 	{
@@ -19,6 +20,8 @@ namespace OpenGLSamples::Based {
 			SHADER_BASE_DIR + "pt.vert",
 			SHADER_BASE_DIR + "pt.frag"
 		);
+
+		glGenVertexArrays(1, &VAO);
 	}
 
 	void loopRender()
@@ -27,6 +30,8 @@ namespace OpenGLSamples::Based {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		planeShader.Use();
+
+		glBindVertexArray(VAO);
 
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
