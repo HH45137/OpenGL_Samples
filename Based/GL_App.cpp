@@ -60,6 +60,9 @@ namespace OpenGLSamples::Based {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		planeShader.Use();
+		planeShader.SetUniformValue(glm::vec3(0.0f, 0.0f, -1.0f), "SpherePos");
+		planeShader.SetUniformValue(1.0f, "SphereRadius");
+		planeShader.SetUniformValue(glm::vec3(0.0f, 0.0f, -2.0f), "CameraPos");
 
 		{
 			glBindVertexArray(VAO);
