@@ -1,13 +1,8 @@
 #version 460 core
 
+layout(location=0)in vec3 aPos;
+
 void main()
 {
-	vec3 vertices[4]=vec3[](
-		vec3(.5f,.5f,.5f),// top right
-		vec3(.5f,-.5f,.5f),// bottom right
-		vec3(-.5f,-.5f,.5f),// bottom left
-		vec3(-.5f,.5f,.5f)// top left
-	);
-	
-	gl_Position=vec4(vertices[gl_VertexID],1.f);
+	gl_Position=vec4(aPos.xyz,1.f);
 }
