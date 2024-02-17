@@ -61,8 +61,12 @@ namespace OpenGLSamples::Based {
 
 		planeShader.Use();
 		planeShader.SetUniformValue(glm::vec3(0.0f, 0.0f, -1.0f), "SpherePos");
-		planeShader.SetUniformValue(1.0f, "SphereRadius");
-		planeShader.SetUniformValue(glm::vec3(0.0f, 0.0f, -2.0f), "CameraPos");
+		planeShader.SetUniformValue(0.2f, "SphereRadius");
+
+		planeShader.SetUniformValue(glm::vec3(-2.0f, -1.0f, -1.0f), "camera01.lower_left_corner");
+		planeShader.SetUniformValue(glm::vec3(4.0f, 0.0f, 0.0f), "camera01.horizontal");
+		planeShader.SetUniformValue(glm::vec3(0.0f, 2.0f, 0.0f), "camera01.vertical");
+		planeShader.SetUniformValue(glm::vec3(0.0f, 0.0f, 0.0f), "camera01.origin");
 
 		{
 			glBindVertexArray(VAO);
