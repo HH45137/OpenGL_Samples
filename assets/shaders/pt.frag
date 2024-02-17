@@ -34,6 +34,11 @@ uniform float SphereRadius;
 
 uniform camera camera01;
 
+vec3 at(ray r, float t) 
+{
+	return r.ori + t * r.dir;
+}
+
 ray genRay()
 {
 	float u = screenCoord.x;
@@ -47,7 +52,7 @@ ray genRay()
 	return ray(camera01.origin, ray_dir);
 }
 
-bool hitSphere(sphere sphere, ray r, out float t) 
+bool hitSphere(sphere sphere, ray r, out float t, out vec3 p) 
 {
 	vec3 oc = r.ori - sphere.center;
 	float A = length(r.dir);
@@ -67,18 +72,26 @@ bool hitSphere(sphere sphere, ray r, out float t)
 		}
 	}
 
+	t = root;
+	p = at(r, t);
+
 	return true;
 }
 
 void main()
 {
 	ray r = genRay();
+	sphere sphere01 = sphere(SpherePos, .5f);
 
 	vec3 color;
 	float t;
-	if(hitSphere(sphere(SpherePos, .5f), r, t))
+	vec3 p;
+	if(hitSphere(sphere01, r, t, p))
 	{
+		vec3 N = normalize(p - sphere01.center);
+
 		color = vec3(1.0f, 0.0f, 0.0f);
+		color = 0.5 * (N + 1.0f);
 	}
 	else 
 	{
