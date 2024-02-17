@@ -13,7 +13,7 @@
 namespace OpenGLSamples {
 	namespace Based {
 
-		const int WIN_WIDTH = 1920, WIN_HEIGHT = 1080, FOV = 70;
+		const int WIN_WIDTH = 1920, WIN_HEIGHT = 960, FOV = 70;
 
 		//OpenGL App
 		class GL_App
